@@ -52,10 +52,16 @@ const Home = () => {
   ];
 
   const platforms = [
-    { name: "Airbnb", logo: "🏠" },
-    { name: "Booking.com", logo: "🌐" },
-    { name: "Vrbo", logo: "🏖️" },
-    { name: "Expedia", logo: "✈️" }
+    { 
+      name: "Airbnb", 
+      logo: "https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg",
+      alt: "Airbnb Logo"
+    },
+    { 
+      name: "Booking.com", 
+      logo: "https://logos-world.net/wp-content/uploads/2021/08/Booking-Logo.png",
+      alt: "Booking.com Logo"
+    }
   ];
 
   return (
@@ -176,13 +182,113 @@ const Home = () => {
           <h2 className="text-2xl font-semibold mb-8 text-muted-foreground">
             Καταχωρούμε το Ακίνητό σας σε Όλες τις Μεγάλες Πλατφόρμες
           </h2>
-          <div className="flex justify-center items-center space-x-8 md:space-x-12">
+          <div className="flex justify-center items-center space-x-12 md:space-x-16">
             {platforms.map((platform, index) => (
-              <div key={index} className="flex flex-col items-center space-y-2">
-                <div className="text-4xl">{platform.logo}</div>
+              <div key={index} className="flex flex-col items-center space-y-3">
+                <img 
+                  src={platform.logo} 
+                  alt={platform.alt}
+                  className="h-8 md:h-10 w-auto object-contain"
+                />
                 <span className="text-sm font-medium text-muted-foreground">{platform.name}</span>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Packages */}
+      <section className="py-16 bg-background">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Πακέτα Υπηρεσιών</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Επιλέξτε το πακέτο που ταιριάζει καλύτερα στις ανάγκες του ακινήτου σας
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Classic Package */}
+            <Card className="relative overflow-hidden hover:shadow-elegant transition-shadow border-2">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-primary"></div>
+              <CardContent className="p-8">
+                <div className="text-center mb-6">
+                  <h3 className="text-2xl font-bold mb-2">Classic</h3>
+                  <div className="text-4xl font-bold text-accent mb-2">20%</div>
+                  <p className="text-muted-foreground">από τα μηνιαία έσοδα</p>
+                </div>
+                
+                <div className="space-y-4 mb-8">
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
+                    <span>Καταχώρηση ακινήτου σε Airbnb και Booking.com</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
+                    <span>Προώθηση ακινήτου στην κοινότητα της Key-Host για περισσότερες κρατήσεις</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
+                    <span>Δυναμική τιμολόγηση</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
+                    <span>Hosting / Υποδοχή επισκεπτών</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
+                    <span>Επαγγελματικός καθαρισμός</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
+                    <span>Υποστήριξη 24/7</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <CheckCircle className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
+                    <span>Διαχείριση λογιστικών</span>
+                  </div>
+                </div>
+                
+                <EnhancedButton asChild className="w-full">
+                  <Link to="/submit-property">Επιλογή Classic</Link>
+                </EnhancedButton>
+              </CardContent>
+            </Card>
+
+            {/* Custom Package */}
+            <Card className="relative overflow-hidden hover:shadow-elegant transition-shadow border-2 border-accent">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-accent"></div>
+              <CardContent className="p-8">
+                <div className="text-center mb-6">
+                  <h3 className="text-2xl font-bold mb-2">Custom</h3>
+                  <div className="text-4xl font-bold text-accent mb-2">Προσαρμοσμένο</div>
+                  <p className="text-muted-foreground">ανάλογα με τις ανάγκες σας</p>
+                </div>
+                
+                <div className="space-y-6 mb-8">
+                  <div className="text-center">
+                    <div className="bg-gradient-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Users className="h-8 w-8 text-primary-foreground" />
+                    </div>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Επικοινωνήστε μαζί μας για εξειδικευμένη προσφορά ανάλογα με τις ανάγκες σας. 
+                      Δημιουργούμε προσαρμοσμένα πακέτα υπηρεσιών που ταιριάζουν ακριβώς στο ακίνητό σας.
+                    </p>
+                  </div>
+                  
+                  <div className="space-y-2 text-center text-sm text-muted-foreground">
+                    <p>✓ Εξατομικευμένες υπηρεσίες</p>
+                    <p>✓ Ευέλικτη τιμολόγηση</p>
+                    <p>✓ Προσωπική συμβουλευτική</p>
+                    <p>✓ Προτεραιότητα στην εξυπηρέτηση</p>
+                  </div>
+                </div>
+                
+                <EnhancedButton asChild variant="outline" className="w-full border-accent text-accent hover:bg-accent hover:text-white">
+                  <Link to="/contact">Επικοινωνία για Custom</Link>
+                </EnhancedButton>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
