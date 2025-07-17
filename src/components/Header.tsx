@@ -23,11 +23,12 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/" className="flex items-center space-x-2">
-              <div className="w-10 h-8 bg-primary rounded flex items-center justify-center">
-                <span className="text-white font-bold text-sm">KH</span>
-              </div>
-              <span className="text-xl font-bold text-foreground">Key-Host</span>
+            <Link to="/" className="flex items-center space-x-3">
+              <img 
+                src="/lovable-uploads/4fd096f0-e2d9-4c14-b82c-bdd90b12c71d.png" 
+                alt="Key-Host Logo" 
+                className="h-10 w-auto"
+              />
             </Link>
           </div>
 

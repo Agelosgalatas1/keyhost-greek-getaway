@@ -1,34 +1,54 @@
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, MessageCircle } from 'lucide-react';
+import { MapPin, Phone, Mail, Instagram, Facebook, MessageCircle } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Footer = () => {
+  const quickLinks = [
+    { name: 'Αρχική', href: '/' },
+    { name: 'Γιατί Key-Host', href: '/about' },
+    { name: 'Υπηρεσίες', href: '/services' },
+    { name: 'Πελατολόγιο', href: '/properties' },
+    { name: 'Επικοινωνία', href: '/contact' },
+  ];
+
+  const services = [
+    'Διαχείριση Καταλυμάτων',
+    'Hosting / Υποδοχή',
+    'Επαγγελματικός Καθαρισμός',
+    'Προώθηση',
+    'Φωτογράφηση',
+    'Social Media'
+  ];
+
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Brand */}
-          <div className="md:col-span-2">
-            <div className="flex items-center mb-4">
-              <span className="text-2xl font-bold">Key Host</span>
-            </div>
-            <p className="text-primary-foreground/80 mb-4 max-w-md">
-              We manage your short-term rental properties so you can enjoy passive income. 
-              Professional management for Airbnb, Booking.com, and more.
+    <footer className="bg-primary-dark-blue text-white">
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="grid md:grid-cols-4 gap-8">
+          {/* Company Info */}
+          <div className="space-y-4">
+            <Link to="/" className="inline-block">
+              <img 
+                src="/lovable-uploads/4fd096f0-e2d9-4c14-b82c-bdd90b12c71d.png" 
+                alt="Key-Host Logo" 
+                className="h-12 w-auto filter brightness-0 invert"
+              />
+            </Link>
+            <p className="text-white/80 text-sm">
+              Το ακίνητό σας, η προτεραιότητά μας. Επαγγελματική διαχείριση βραχυχρόνιων μισθώσεων σε όλη την Ελλάδα.
             </p>
-            <div className="flex space-x-4">
-              <Button variant="ghost" size="sm" asChild className="text-primary-foreground hover:text-accent">
+            <div className="flex space-x-2">
+              <Button variant="ghost" size="sm" asChild className="text-white/60 hover:text-accent p-2">
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                   <Instagram className="h-5 w-5" />
                 </a>
               </Button>
-              <Button variant="ghost" size="sm" asChild className="text-primary-foreground hover:text-accent">
+              <Button variant="ghost" size="sm" asChild className="text-white/60 hover:text-accent p-2">
                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
                   <Facebook className="h-5 w-5" />
                 </a>
               </Button>
-              <Button variant="ghost" size="sm" asChild className="text-primary-foreground hover:text-accent">
-                <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+              <Button variant="ghost" size="sm" asChild className="text-white/60 hover:text-accent p-2">
+                <a href="https://wa.me/302752220223" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="h-5 w-5" />
                 </a>
               </Button>
@@ -37,52 +57,77 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <h3 className="font-semibold mb-4">Γρήγοροι Σύνδεσμοι</h3>
             <ul className="space-y-2">
-              <li>
-                <Link to="/about" className="text-primary-foreground/80 hover:text-accent transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-primary-foreground/80 hover:text-accent transition-colors">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link to="/submit-property" className="text-primary-foreground/80 hover:text-accent transition-colors">
-                  Submit Property
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-primary-foreground/80 hover:text-accent transition-colors">
-                  Contact
-                </Link>
-              </li>
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <Link 
+                    to={link.href} 
+                    className="text-white/80 hover:text-accent transition-colors text-sm"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h3 className="font-semibold mb-4">Υπηρεσίες</h3>
+            <ul className="space-y-2">
+              {services.map((service) => (
+                <li key={service}>
+                  <span className="text-white/80 text-sm">{service}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
-            <div className="space-y-2 text-primary-foreground/80">
-              <p>Athens, Greece</p>
-              <p>info@keyhost.gr</p>
-              <p>+30 123 456 7890</p>
+            <h3 className="font-semibold mb-4">Επικοινωνία</h3>
+            <div className="space-y-3">
+              <div className="flex items-start space-x-2">
+                <Phone className="h-4 w-4 mt-0.5 text-accent" />
+                <div>
+                  <p className="text-white/80 text-sm">+30 275 222 0223</p>
+                  <p className="text-white/60 text-xs">Δευτ-Παρ 9:00-18:00</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-2">
+                <Mail className="h-4 w-4 mt-0.5 text-accent" />
+                <div>
+                  <p className="text-white/80 text-sm">info@key-host.gr</p>
+                  <p className="text-white/60 text-xs">24/7 υποστήριξη</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-2">
+                <MapPin className="h-4 w-4 mt-0.5 text-accent" />
+                <div>
+                  <p className="text-white/80 text-sm">Ελλάδα</p>
+                  <p className="text-white/60 text-xs">Πανελλαδική εξυπηρέτηση</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-primary-foreground/20">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-primary-foreground/60 text-sm">
-              © 2024 Key Host. All rights reserved.
-            </p>
-            <div className="mt-4 md:mt-0">
-              <Button asChild variant="outline" size="sm" className="border-accent text-accent hover:bg-accent hover:text-primary">
-                <Link to="/submit-property">Get Started Today</Link>
-              </Button>
-            </div>
+        {/* Bottom Bar */}
+        <div className="border-t border-white/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-white/60 text-sm">
+            © 2024 Key-Host. Όλα τα δικαιώματα διατηρούνται.
+          </p>
+          <div className="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" className="text-white/60 hover:text-accent transition-colors text-sm">
+              Όροι Χρήσης
+            </a>
+            <a href="#" className="text-white/60 hover:text-accent transition-colors text-sm">
+              Πολιτική Απορρήτου
+            </a>
+            <a href="#" className="text-white/60 hover:text-accent transition-colors text-sm">
+              Cookies
+            </a>
           </div>
         </div>
       </div>
