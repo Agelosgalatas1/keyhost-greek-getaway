@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import heroImage from "@/assets/hero-villa.jpg";
 import {
@@ -17,6 +18,7 @@ import {
   Mail,
   Phone,
   MapPin,
+  ExternalLink,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -28,6 +30,7 @@ const Index = () => {
     phone: "",
     message: "",
   });
+  const [selectedProperty, setSelectedProperty] = useState<any>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,6 +44,64 @@ const Index = () => {
   const scrollToContact = () => {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const properties = [
+    {
+      id: 1,
+      title: "Παραδοσιακό Σπίτι στην Παλιά Πόλη",
+      location: "Ναύπλιο",
+      bedrooms: 2,
+      guests: 4,
+      description: "Αυθεντικό σπίτι με θέα στο κάστρο, στην καρδιά της παλιάς πόλης.",
+      image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      airbnbLink: "https://www.airbnb.com/rooms/sample1",
+      bookingLink: "https://www.booking.com/hotel/sample1"
+    },
+    {
+      id: 2,
+      title: "Σύγχρονο Διαμέρισμα με Θέα",
+      location: "Ναύπλιο",
+      bedrooms: 1,
+      guests: 2,
+      description: "Μοντέρνο διαμέρισμα με πανοραμική θέα στον Αργολικό κόλπο.",
+      image: "https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      airbnbLink: "https://www.airbnb.com/rooms/sample2",
+      bookingLink: "https://www.booking.com/hotel/sample2"
+    },
+    {
+      id: 3,
+      title: "Βίλα κοντά στη Θάλασσα",
+      location: "Ναύπλιο",
+      bedrooms: 3,
+      guests: 6,
+      description: "Πολυτελής βίλα με πισίνα, 5 λεπτά από την παραλία.",
+      image: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      airbnbLink: "https://www.airbnb.com/rooms/sample3",
+      bookingLink: "https://www.booking.com/hotel/sample3"
+    },
+    {
+      id: 4,
+      title: "Στούντιο στο Κέντρο",
+      location: "Ναύπλιο",
+      bedrooms: 0,
+      guests: 2,
+      description: "Άνετο στούντιο στο κέντρο, κοντά σε εστιατόρια και καφέ.",
+      image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      airbnbLink: "https://www.airbnb.com/rooms/sample4",
+      bookingLink: "https://www.booking.com/hotel/sample4"
+    },
+    {
+      id: 5,
+      title: "Μεζονέτα με Κήπο",
+      location: "Ναύπλιο",
+      bedrooms: 2,
+      guests: 5,
+      description: "Ευρύχωρη μεζονέτα με ιδιωτικό κήπο και BBQ.",
+      image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      airbnbLink: "https://www.airbnb.com/rooms/sample5",
+      bookingLink: "https://www.booking.com/hotel/sample5"
+    }
+  ];
 
   const services = [
     {
@@ -147,6 +208,93 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Property Modal */}
+      <Dialog open={!!selectedProperty} onOpenChange={(open) => !open && setSelectedProperty(null)}>
+        <DialogContent className="sm:max-w-[500px]">
+          {selectedProperty && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="text-primary">
+                  {selectedProperty.title}
+                </DialogTitle>
+              </DialogHeader>
+              <div className="space-y-6">
+                <div className="aspect-video rounded-lg overflow-hidden">
+                  <img 
+                    src={selectedProperty.image}
+                    alt={selectedProperty.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                
+                <div>
+                  <p className="text-muted-foreground mb-2">
+                    {selectedProperty.location} • {selectedProperty.bedrooms > 0 ? `${selectedProperty.bedrooms} υπνοδωμάτια` : 'Στούντιο'} • {selectedProperty.guests} επισκέπτες
+                  </p>
+                  <p className="text-sm">
+                    {selectedProperty.description}
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-primary">Κάντε κράτηση:</h4>
+                  
+                  <div className="grid grid-cols-2 gap-3">
+                    <Button 
+                      variant="outline" 
+                      className="flex items-center gap-2"
+                      onClick={() => window.open(selectedProperty.airbnbLink, '_blank')}
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      Airbnb
+                    </Button>
+                    
+                    <Button 
+                      variant="outline" 
+                      className="flex items-center gap-2"
+                      onClick={() => window.open(selectedProperty.bookingLink, '_blank')}
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      Booking.com
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="bg-accent/10 p-4 rounded-lg border border-accent/20">
+                  <div className="text-center space-y-3">
+                    <h4 className="font-semibold text-primary">
+                      Κάλεσε εδώ και πρόλαβε χαμηλές τιμές!
+                    </h4>
+                    
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-center gap-2 text-sm">
+                        <Phone className="w-4 h-4 text-accent" />
+                        <a 
+                          href="tel:2752220223" 
+                          className="text-accent hover:underline font-medium"
+                        >
+                          2752 220223
+                        </a>
+                      </div>
+                      
+                      <div className="flex items-center justify-center gap-2 text-sm">
+                        <Mail className="w-4 h-4 text-accent" />
+                        <a 
+                          href="mailto:info@key-host.gr" 
+                          className="text-accent hover:underline"
+                        >
+                          info@key-host.gr
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
+
       {/* About Section */}
       <section className="py-20 px-4 bg-muted/20">
         <div className="max-w-4xl mx-auto text-center">
@@ -176,115 +324,32 @@ const Index = () => {
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Property 1 */}
-            <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <div className="aspect-video bg-muted">
-                <img 
-                  src="https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                  alt="Παραδοσιακό σπίτι Ναύπλιο"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-primary mb-2">
-                  Παραδοσιακό Σπίτι στην Παλιά Πόλη
-                </h3>
-                <p className="text-muted-foreground text-sm mb-3">
-                  Ναύπλιο • 2 υπνοδωμάτια • 4 επισκέπτες
-                </p>
-                <p className="text-sm">
-                  Αυθεντικό σπίτι με θέα στο κάστρο, στην καρδιά της παλιάς πόλης.
-                </p>
-              </CardContent>
-            </Card>
-
-            {/* Property 2 */}
-            <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <div className="aspect-video bg-muted">
-                <img 
-                  src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                  alt="Διαμέρισμα με θέα"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-primary mb-2">
-                  Σύγχρονο Διαμέρισμα με Θέα
-                </h3>
-                <p className="text-muted-foreground text-sm mb-3">
-                  Ναύπλιο • 1 υπνοδωμάτιο • 2 επισκέπτες
-                </p>
-                <p className="text-sm">
-                  Μοντέρνο διαμέρισμα με πανοραμική θέα στον Αργολικό κόλπο.
-                </p>
-              </CardContent>
-            </Card>
-
-            {/* Property 3 */}
-            <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <div className="aspect-video bg-muted">
-                <img 
-                  src="https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                  alt="Βίλα κοντά στη θάλασσα"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-primary mb-2">
-                  Βίλα κοντά στη Θάλασσα
-                </h3>
-                <p className="text-muted-foreground text-sm mb-3">
-                  Ναύπλιο • 3 υπνοδωμάτια • 6 επισκέπτες
-                </p>
-                <p className="text-sm">
-                  Πολυτελής βίλα με πισίνα, 5 λεπτά από την παραλία.
-                </p>
-              </CardContent>
-            </Card>
-
-            {/* Property 4 */}
-            <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <div className="aspect-video bg-muted">
-                <img 
-                  src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                  alt="Στούντιο στο κέντρο"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-primary mb-2">
-                  Στούντιο στο Κέντρο
-                </h3>
-                <p className="text-muted-foreground text-sm mb-3">
-                  Ναύπλιο • Στούντιο • 2 επισκέπτες
-                </p>
-                <p className="text-sm">
-                  Άνετο στούντιο στο κέντρο, κοντά σε εστιατόρια και καφέ.
-                </p>
-              </CardContent>
-            </Card>
-
-            {/* Property 5 */}
-            <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <div className="aspect-video bg-muted">
-                <img 
-                  src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                  alt="Μεζονέτα με κήπο"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-primary mb-2">
-                  Μεζονέτα με Κήπο
-                </h3>
-                <p className="text-muted-foreground text-sm mb-3">
-                  Ναύπλιο • 2 υπνοδωμάτια • 5 επισκέπτες
-                </p>
-                <p className="text-sm">
-                  Ευρύχωρη μεζονέτα με ιδιωτικό κήπο και BBQ.
-                </p>
-              </CardContent>
-            </Card>
+            {properties.map((property) => (
+              <Card 
+                key={property.id}
+                className="overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+                onClick={() => setSelectedProperty(property)}
+              >
+                <div className="aspect-video bg-muted">
+                  <img 
+                    src={property.image}
+                    alt={property.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold text-primary mb-2">
+                    {property.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm mb-3">
+                    {property.location} • {property.bedrooms > 0 ? `${property.bedrooms} υπνοδωμάτια` : 'Στούντιο'} • {property.guests} επισκέπτες
+                  </p>
+                  <p className="text-sm">
+                    {property.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
