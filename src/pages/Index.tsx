@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import heroImage from "@/assets/hero-villa.jpg";
+import { Link } from "react-router-dom";
 import {
   Home,
   Users,
@@ -313,7 +314,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Portfolio Section */}
+      {/* Portfolio Section - Preview */}
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-primary mb-8">
@@ -323,8 +324,9 @@ const Index = () => {
             Εκατοντάδες διανυκτερεύσεις κάθε μήνα. Ικανοποιημένοι ιδιοκτήτες στο Ναύπλιο.
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {properties.map((property) => (
+          {/* Show only first 3 properties as preview */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {properties.slice(0, 3).map((property) => (
               <Card 
                 key={property.id}
                 className="overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer"
@@ -350,6 +352,17 @@ const Index = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+          
+          {/* View All Button */}
+          <div className="text-center">
+            <Button 
+              size="lg" 
+              className="bg-accent hover:bg-accent/90 text-white"
+              asChild
+            >
+              <Link to="/properties">Δείτε Όλα τα Ακίνητα</Link>
+            </Button>
           </div>
         </div>
       </section>
