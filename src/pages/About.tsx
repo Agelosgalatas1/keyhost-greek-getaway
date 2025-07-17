@@ -23,14 +23,38 @@ const About = () => {
   ];
 
   const whyChooseUs = [
-    "Local expertise in Greek vacation rental markets",
-    "Multilingual team (Greek, English, German, French)",
-    "24/7 guest support and emergency response",
-    "Professional photography and listing optimization",
-    "Dynamic pricing and revenue optimization",
-    "Comprehensive property maintenance network",
-    "Transparent reporting and regular updates",
-    "Full legal compliance and tax assistance"
+    {
+      title: "Local Market Expertise",
+      description: "Our team deeply understands Greece's vacation rental landscape — from seasonal pricing patterns to local regulations and guest expectations. This knowledge helps you price competitively, avoid costly mistakes, and maximize occupancy rates year-round."
+    },
+    {
+      title: "Multilingual Team",
+      description: "We communicate seamlessly with guests and owners in Greek, English, French, and German. This builds trust with international visitors, reduces booking hesitations, and ensures you never miss opportunities due to language barriers."
+    },
+    {
+      title: "24/7 Guest Support",
+      description: "Your guests can reach us anytime — day or night — for check-in issues, emergency repairs, or simple questions. You'll never wake up to urgent calls or spend your evenings troubleshooting problems from afar."
+    },
+    {
+      title: "Professional Presentation",
+      description: "Every property gets professional photography, expert staging, and compelling descriptions that make listings stand out. This attention to detail attracts quality guests, commands higher rates, and generates more positive reviews."
+    },
+    {
+      title: "Revenue Optimization",
+      description: "We adjust your pricing daily based on real-time data — seasonality, local events, competitor rates, and booking demand. This data-driven approach consistently outperforms static pricing, often increasing revenue by 15-25%."
+    },
+    {
+      title: "Maintenance & Repairs Network",
+      description: "Our trusted network of local cleaners, technicians, and tradespeople keeps your property in pristine condition. From routine maintenance to emergency repairs, we handle everything without requiring your time or presence."
+    },
+    {
+      title: "Transparent Reporting",
+      description: "Receive clear monthly reports covering bookings, revenue, expenses, and property updates. You'll always know exactly how your investment is performing without having to track countless details yourself."
+    },
+    {
+      title: "Legal & Tax Support",
+      description: "We help you navigate Greece's short-term rental regulations, tax obligations, and required documentation. Stay compliant with local laws while we handle the paperwork, permits, and government reporting."
+    }
   ];
 
   return (
@@ -123,11 +147,14 @@ const About = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-1 gap-8 max-w-5xl mx-auto">
             {whyChooseUs.map((reason, index) => (
-              <div key={index} className="flex items-start space-x-3">
+              <div key={index} className="flex items-start space-x-4 p-6 bg-muted/30 rounded-lg">
                 <CheckCircle className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
-                <span className="text-lg">{reason}</span>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">{reason.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{reason.description}</p>
+                </div>
               </div>
             ))}
           </div>
