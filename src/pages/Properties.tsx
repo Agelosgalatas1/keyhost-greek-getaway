@@ -1,249 +1,318 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { useState } from "react";
-import { ExternalLink, Phone, Mail } from "lucide-react";
+import { useState } from 'react';
+import { MapPin, Users, Star, Wifi, Car, Waves, Mountain, Home } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { EnhancedButton } from '@/components/ui/enhanced-button';
+import { Link } from 'react-router-dom';
 
 const Properties = () => {
-  const [selectedProperty, setSelectedProperty] = useState<any>(null);
+  const [selectedFilter, setSelectedFilter] = useState('all');
+  const [selectedGuests, setSelectedGuests] = useState('all');
+
+  const filters = [
+    { id: 'all', label: 'Όλα τα Ακίνητα' },
+    { id: 'santorini', label: 'Σαντορίνη' },
+    { id: 'mykonos', label: 'Μύκονος' },
+    { id: 'athens', label: 'Αθήνα' },
+    { id: 'crete', label: 'Κρήτη' },
+    { id: 'nafplio', label: 'Ναύπλιο' }
+  ];
+
+  const guestFilters = [
+    { id: 'all', label: 'Όλοι' },
+    { id: '1-2', label: '1-2 άτομα' },
+    { id: '3-4', label: '3-4 άτομα' },
+    { id: '5-8', label: '5-8 άτομα' },
+    { id: '8+', label: '8+ άτομα' }
+  ];
 
   const properties = [
     {
       id: 1,
-      title: "Παραδοσιακό Σπίτι στην Παλιά Πόλη",
-      location: "Ναύπλιο",
-      bedrooms: 2,
-      guests: 4,
-      description: "Αυθεντικό σπίτι με θέα στο κάστρο, στην καρδιά της παλιάς πόλης.",
-      image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      airbnbLink: "https://www.airbnb.com/rooms/sample1",
-      bookingLink: "https://www.booking.com/hotel/sample1"
+      title: "Σαντορίνη Sunset Villa",
+      location: "Οία, Σαντορίνη",
+      type: "villa",
+      guests: 6,
+      rating: 4.9,
+      reviews: 127,
+      price: "€320",
+      image: "/placeholder.svg",
+      highlights: ["Θέα Ηλιοβασιλέματος", "Ιδιωτική Πισίνα", "5 λεπτά από Οία"],
+      amenities: ["Wifi", "Parking", "Pool"],
+      category: "santorini"
     },
     {
       id: 2,
-      title: "Σύγχρονο Διαμέρισμα με Θέα",
-      location: "Ναύπλιο",
-      bedrooms: 1,
-      guests: 2,
-      description: "Μοντέρνο διαμέρισμα με πανοραμική θέα στον Αργολικό κόλπο.",
-      image: "https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      airbnbLink: "https://www.airbnb.com/rooms/sample2",
-      bookingLink: "https://www.booking.com/hotel/sample2"
+      title: "Μύκονος Beach House",
+      location: "Πλατύς Γιαλός, Μύκονος",
+      type: "house",
+      guests: 8,
+      rating: 4.8,
+      reviews: 89,
+      price: "€450",
+      image: "/placeholder.svg",
+      highlights: ["Πρόσβαση στην Παραλία", "Σύγχρονη Διακόσμηση", "BBQ Area"],
+      amenities: ["Wifi", "Beach Access", "Parking"],
+      category: "mykonos"
     },
     {
       id: 3,
-      title: "Βίλα κοντά στη Θάλασσα",
-      location: "Ναύπλιο",
-      bedrooms: 3,
-      guests: 6,
-      description: "Πολυτελής βίλα με πισίνα, 5 λεπτά από την παραλία.",
-      image: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      airbnbLink: "https://www.airbnb.com/rooms/sample3",
-      bookingLink: "https://www.booking.com/hotel/sample3"
+      title: "Αθήνα Central Loft",
+      location: "Κολωνάκι, Αθήνα",
+      type: "apartment",
+      guests: 4,
+      rating: 4.7,
+      reviews: 203,
+      price: "€150",
+      image: "/placeholder.svg",
+      highlights: ["Κέντρο Αθήνας", "Σύγχρονο Design", "Κοντά σε Μετρό"],
+      amenities: ["Wifi", "Metro Access", "Rooftop"],
+      category: "athens"
     },
     {
       id: 4,
-      title: "Στούντιο στο Κέντρο",
-      location: "Ναύπλιο",
-      bedrooms: 0,
-      guests: 2,
-      description: "Άνετο στούντιο στο κέντρο, κοντά σε εστιατόρια και καφέ.",
-      image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      airbnbLink: "https://www.airbnb.com/rooms/sample4",
-      bookingLink: "https://www.booking.com/hotel/sample4"
+      title: "Κρήτη Mountain Retreat",
+      location: "Χανιά, Κρήτη",
+      type: "villa",
+      guests: 10,
+      rating: 5.0,
+      reviews: 45,
+      price: "€280",
+      image: "/placeholder.svg",
+      highlights: ["Θέα Βουνού", "Παραδοσιακή Αρχιτεκτονική", "Ιδιωτικός Κήπος"],
+      amenities: ["Wifi", "Garden", "Mountain View"],
+      category: "crete"
     },
     {
       id: 5,
-      title: "Μεζονέτα με Κήπο",
-      location: "Ναύπλιο",
-      bedrooms: 2,
-      guests: 5,
-      description: "Ευρύχωρη μεζονέτα με ιδιωτικό κήπο και BBQ.",
-      image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      airbnbLink: "https://www.airbnb.com/rooms/sample5",
-      bookingLink: "https://www.booking.com/hotel/sample5"
+      title: "Ναύπλιο Historic House",
+      location: "Παλιά Πόλη, Ναύπλιο",
+      type: "house",
+      guests: 6,
+      rating: 4.8,
+      reviews: 156,
+      price: "€200",
+      image: "/placeholder.svg",
+      highlights: ["Ιστορικό Κέντρο", "Παραδοσιακή Διακόσμηση", "Θέα Κάστρου"],
+      amenities: ["Wifi", "Historic", "Castle View"],
+      category: "nafplio"
     },
     {
       id: 6,
-      title: "Πολυτελές Διαμέρισμα στο Κέντρο",
-      location: "Ναύπλιο",
-      bedrooms: 2,
-      guests: 4,
-      description: "Πλήρως εξοπλισμένο διαμέρισμα με σύγχρονες ανέσεις.",
-      image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      airbnbLink: "https://www.airbnb.com/rooms/sample6",
-      bookingLink: "https://www.booking.com/hotel/sample6"
-    },
-    {
-      id: 7,
-      title: "Οικογενειακό Σπίτι με Αυλή",
-      location: "Ναύπλιο",
-      bedrooms: 3,
-      guests: 8,
-      description: "Ιδανικό για μεγάλες οικογένειες με μεγάλη αυλή και παιδική χαρά.",
-      image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      airbnbLink: "https://www.airbnb.com/rooms/sample7",
-      bookingLink: "https://www.booking.com/hotel/sample7"
-    },
-    {
-      id: 8,
-      title: "Ρομαντικό Καταφύγιο για Ζευγάρια",
-      location: "Ναύπλιο",
-      bedrooms: 1,
+      title: "Σαντορίνη Cave House",
+      location: "Φηρά, Σαντορίνη",
+      type: "cave house",
       guests: 2,
-      description: "Άνετο και ρομαντικό χώρος με θέα στη θάλασσα.",
-      image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      airbnbLink: "https://www.airbnb.com/rooms/sample8",
-      bookingLink: "https://www.booking.com/hotel/sample8"
-    },
-    {
-      id: 9,
-      title: "Αρχοντικό με Ιστορία",
-      location: "Ναύπλιο",
-      bedrooms: 4,
-      guests: 10,
-      description: "Παραδοσιακό αρχοντικό με αυθεντική διακόσμηση και σύγχρονες ανέσεις.",
-      image: "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      airbnbLink: "https://www.airbnb.com/rooms/sample9",
-      bookingLink: "https://www.booking.com/hotel/sample9"
+      rating: 4.9,
+      reviews: 78,
+      price: "€250",
+      image: "/placeholder.svg",
+      highlights: ["Παραδοσιακό Cave House", "Θέα Καλντέρας", "Ρομαντικό"],
+      amenities: ["Wifi", "Caldera View", "Traditional"],
+      category: "santorini"
     }
   ];
 
+  const filteredProperties = properties.filter(property => {
+    const matchesLocation = selectedFilter === 'all' || property.category === selectedFilter;
+    const matchesGuests = selectedGuests === 'all' || 
+      (selectedGuests === '1-2' && property.guests <= 2) ||
+      (selectedGuests === '3-4' && property.guests >= 3 && property.guests <= 4) ||
+      (selectedGuests === '5-8' && property.guests >= 5 && property.guests <= 8) ||
+      (selectedGuests === '8+' && property.guests > 8);
+    
+    return matchesLocation && matchesGuests;
+  });
+
+  const getTypeIcon = (type: string) => {
+    switch(type) {
+      case 'villa': return <Home className="h-4 w-4" />;
+      case 'house': return <Home className="h-4 w-4" />;
+      case 'apartment': return <Home className="h-4 w-4" />;
+      default: return <Home className="h-4 w-4" />;
+    }
+  };
+
+  const getAmenityIcon = (amenity: string) => {
+    switch(amenity.toLowerCase()) {
+      case 'wifi': return <Wifi className="h-4 w-4" />;
+      case 'parking': return <Car className="h-4 w-4" />;
+      case 'beach access': return <Waves className="h-4 w-4" />;
+      case 'mountain view': return <Mountain className="h-4 w-4" />;
+      default: return <Star className="h-4 w-4" />;
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header Section */}
-      <section className="py-20 px-4 bg-gradient-subtle">
-        <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="py-20 bg-gradient-hero">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
             Το Πελατολόγιό μας
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ανακαλύψτε την ποικιλία των ακινήτων που διαχειριζόμαστε στο Ναύπλιο. 
-            Κάθε κατάλυμα προσφέρει μοναδικές εμπειρίες και άνεση στους επισκέπτες μας.
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+            Ανακαλύψτε τα εξαιρετικά ακίνητα που διαχειριζόμαστε σε όλη την Ελλάδα
           </p>
         </div>
       </section>
 
-      {/* Properties Grid */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {properties.map((property) => (
-              <Card 
-                key={property.id}
-                className="overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer"
-                onClick={() => setSelectedProperty(property)}
-              >
-                <div className="aspect-video bg-muted">
-                  <img 
-                    src={property.image}
-                    alt={property.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-semibold text-primary mb-2">
-                    {property.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm mb-3">
-                    {property.location} • {property.bedrooms > 0 ? `${property.bedrooms} υπνοδωμάτια` : 'Στούντιο'} • {property.guests} επισκέπτες
-                  </p>
-                  <p className="text-sm">
-                    {property.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
+      {/* Filters */}
+      <section className="py-8 bg-background border-b border-border">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row gap-6">
+            {/* Location Filter */}
+            <div className="flex-1">
+              <label className="block text-sm font-medium mb-2">Περιοχή</label>
+              <div className="flex flex-wrap gap-2">
+                {filters.map(filter => (
+                  <button
+                    key={filter.id}
+                    onClick={() => setSelectedFilter(filter.id)}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                      selectedFilter === filter.id
+                        ? 'bg-primary text-primary-foreground'
+                        : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                    }`}
+                  >
+                    {filter.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Guests Filter */}
+            <div className="flex-1">
+              <label className="block text-sm font-medium mb-2">Αριθμός Επισκεπτών</label>
+              <div className="flex flex-wrap gap-2">
+                {guestFilters.map(filter => (
+                  <button
+                    key={filter.id}
+                    onClick={() => setSelectedGuests(filter.id)}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                      selectedGuests === filter.id
+                        ? 'bg-primary text-primary-foreground'
+                        : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                    }`}
+                  >
+                    {filter.label}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Property Modal */}
-      <Dialog open={!!selectedProperty} onOpenChange={(open) => !open && setSelectedProperty(null)}>
-        <DialogContent className="sm:max-w-[500px]">
-          {selectedProperty && (
-            <>
-              <DialogHeader>
-                <DialogTitle className="text-primary">
-                  {selectedProperty.title}
-                </DialogTitle>
-              </DialogHeader>
-              <div className="space-y-6">
-                <div className="aspect-video rounded-lg overflow-hidden">
+      {/* Properties Grid */}
+      <section className="py-16 bg-background">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="mb-8">
+            <p className="text-muted-foreground">
+              Βρέθηκαν {filteredProperties.length} ακίνητα
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProperties.map(property => (
+              <Card key={property.id} className="overflow-hidden hover:shadow-elegant transition-shadow group">
+                <div className="aspect-[4/3] bg-muted relative overflow-hidden">
                   <img 
-                    src={selectedProperty.image}
-                    alt={selectedProperty.title}
-                    className="w-full h-full object-cover"
+                    src={property.image} 
+                    alt={property.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
+                  <div className="absolute top-4 left-4">
+                    <Badge variant="secondary" className="bg-background/90 text-foreground">
+                      {getTypeIcon(property.type)}
+                      <span className="ml-1 capitalize">{property.type}</span>
+                    </Badge>
+                  </div>
+                  <div className="absolute top-4 right-4">
+                    <Badge variant="secondary" className="bg-background/90 text-foreground">
+                      <Users className="h-3 w-3 mr-1" />
+                      {property.guests}
+                    </Badge>
+                  </div>
                 </div>
                 
-                <div>
-                  <p className="text-muted-foreground mb-2">
-                    {selectedProperty.location} • {selectedProperty.bedrooms > 0 ? `${selectedProperty.bedrooms} υπνοδωμάτια` : 'Στούντιο'} • {selectedProperty.guests} επισκέπτες
-                  </p>
-                  <p className="text-sm">
-                    {selectedProperty.description}
-                  </p>
-                </div>
-
-                <div className="space-y-4">
-                  <h4 className="font-semibold text-primary">Κάντε κράτηση:</h4>
-                  
-                  <div className="grid grid-cols-2 gap-3">
-                    <Button 
-                      variant="outline" 
-                      className="flex items-center gap-2"
-                      onClick={() => window.open(selectedProperty.airbnbLink, '_blank')}
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      Airbnb
-                    </Button>
-                    
-                    <Button 
-                      variant="outline" 
-                      className="flex items-center gap-2"
-                      onClick={() => window.open(selectedProperty.bookingLink, '_blank')}
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      Booking.com
-                    </Button>
-                  </div>
-                </div>
-
-                <div className="bg-accent/10 p-4 rounded-lg border border-accent/20">
-                  <div className="text-center space-y-3">
-                    <h4 className="font-semibold text-primary">
-                      Κάλεσε εδώ και πρόλαβε χαμηλές τιμές!
-                    </h4>
-                    
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-center gap-2 text-sm">
-                        <Phone className="w-4 h-4 text-accent" />
-                        <a 
-                          href="tel:2752220223" 
-                          className="text-accent hover:underline font-medium"
-                        >
-                          2752 220223
-                        </a>
-                      </div>
-                      
-                      <div className="flex items-center justify-center gap-2 text-sm">
-                        <Mail className="w-4 h-4 text-accent" />
-                        <a 
-                          href="mailto:info@key-host.gr" 
-                          className="text-accent hover:underline"
-                        >
-                          info@key-host.gr
-                        </a>
-                      </div>
+                <CardContent className="p-6">
+                  <div className="flex items-start justify-between mb-2">
+                    <h3 className="text-lg font-semibold line-clamp-1">{property.title}</h3>
+                    <div className="flex items-center space-x-1">
+                      <Star className="h-4 w-4 fill-accent text-accent" />
+                      <span className="text-sm font-medium">{property.rating}</span>
+                      <span className="text-sm text-muted-foreground">({property.reviews})</span>
                     </div>
                   </div>
-                </div>
-              </div>
-            </>
+                  
+                  <div className="flex items-center space-x-1 mb-3">
+                    <MapPin className="h-4 w-4 text-muted-foreground" />
+                    <span className="text-sm text-muted-foreground">{property.location}</span>
+                  </div>
+
+                  <div className="space-y-3 mb-4">
+                    <div>
+                      <h4 className="text-sm font-medium mb-1">Highlights:</h4>
+                      <div className="flex flex-wrap gap-1">
+                        {property.highlights.slice(0, 2).map((highlight, index) => (
+                          <Badge key={index} variant="outline" className="text-xs">
+                            {highlight}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center space-x-2">
+                      {property.amenities.slice(0, 3).map((amenity, index) => (
+                        <div key={index} className="flex items-center space-x-1">
+                          {getAmenityIcon(amenity)}
+                          <span className="text-xs text-muted-foreground">{amenity}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-lg font-bold text-primary">{property.price}</span>
+                      <span className="text-sm text-muted-foreground">/βράδυ</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {filteredProperties.length === 0 && (
+            <div className="text-center py-12">
+              <Home className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
+              <h3 className="text-lg font-semibold mb-2">Δεν βρέθηκαν ακίνητα</h3>
+              <p className="text-muted-foreground">Δοκιμάστε να αλλάξετε τα φίλτρα αναζήτησης</p>
+            </div>
           )}
-        </DialogContent>
-      </Dialog>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-primary text-primary-foreground">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Θέλετε το Ακίνητό σας εδώ;
+          </h2>
+          <p className="text-xl mb-8 text-primary-foreground/90">
+            Γίνετε μέλος του αυξανόμενου δικτύου επιτυχημένων ακινήτων που διαχειριζόμαστε.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <EnhancedButton asChild variant="outline" size="xl" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+              <Link to="/submit-property">Υποβολή Ακινήτου</Link>
+            </EnhancedButton>
+            <EnhancedButton asChild variant="ghost" size="xl" className="text-primary-foreground hover:bg-primary-foreground/10">
+              <Link to="/contact">Μάθετε Περισσότερα</Link>
+            </EnhancedButton>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

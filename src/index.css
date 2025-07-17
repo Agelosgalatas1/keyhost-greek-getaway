@@ -9,24 +9,24 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
+    --foreground: 218 72% 17%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 0%;
+    --card-foreground: 218 72% 17%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
+    --popover-foreground: 218 72% 17%;
 
-    --primary: 218 72% 17%;
+    --primary: 174 100% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 0 0% 0%;
+    --secondary: 187 85% 84%;
+    --secondary-foreground: 218 72% 17%;
 
     --muted: 220 14% 96%;
     --muted-foreground: 215 16% 47%;
 
-    --accent: 174 60% 45%;
+    --accent: 174 100% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -34,16 +34,16 @@ All colors MUST be HSL.
 
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 174 60% 45%;
+    --ring: 174 100% 50%;
 
     /* Key Host Brand Colors */
-    --primary-turquoise: 174 60% 45%;
+    --primary-turquoise: 174 100% 50%;
     --primary-dark-blue: 218 72% 17%;
     --accent-light-blue: 187 85% 84%;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary-dark-blue)), hsl(var(--primary-turquoise) / 0.9));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary-dark-blue) / 0.7), hsl(var(--primary-turquoise) / 0.5));
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary-turquoise)), hsl(var(--accent-light-blue)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary-dark-blue)), hsl(var(--primary-turquoise) / 0.8));
     --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--accent-light-blue) / 0.1));
     
     /* Elegant Shadows */
