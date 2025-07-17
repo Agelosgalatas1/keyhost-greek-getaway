@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import { Button } from './ui/button';
+import { Menu, X, Phone } from 'lucide-react';
+import { EnhancedButton } from '@/components/ui/enhanced-button';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
   const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'About Us', href: '/about' },
-    { name: 'Services', href: '/services' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Αρχική', href: '/' },
+    { name: 'Γιατί Key-Host', href: '/about' },
+    { name: 'Υπηρεσίες', href: '/services' },
+    { name: 'Πελατολόγιο', href: '/properties' },
+    { name: 'Επικοινωνία', href: '/contact' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -22,8 +23,11 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/" className="text-2xl font-bold text-primary">
-              Key Host
+            <Link to="/" className="flex items-center space-x-2">
+              <div className="w-10 h-8 bg-primary rounded flex items-center justify-center">
+                <span className="text-white font-bold text-sm">KH</span>
+              </div>
+              <span className="text-xl font-bold text-foreground">Key-Host</span>
             </Link>
           </div>
 
@@ -46,23 +50,24 @@ const Header = () => {
             </div>
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <Button asChild variant="default" className="bg-gradient-primary hover:opacity-90">
-              <Link to="/submit-property">List Your Property</Link>
-            </Button>
+          {/* Contact Info & CTA */}
+          <div className="hidden lg:flex items-center space-x-4">
+            <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+              <Phone className="h-4 w-4" />
+              <span>+30 275 222 0223</span>
+            </div>
+            <EnhancedButton asChild size="sm">
+              <Link to="/submit-property">Υποβολή Ακινήτου</Link>
+            </EnhancedButton>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
-          </div>
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2 rounded-md text-muted-foreground hover:text-accent transition-colors"
+          >
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
 
         {/* Mobile Navigation */}
@@ -83,10 +88,14 @@ const Header = () => {
                   {item.name}
                 </Link>
               ))}
-              <div className="pt-4 pb-2">
-                <Button asChild variant="default" className="w-full bg-gradient-primary">
-                  <Link to="/submit-property">List Your Property</Link>
-                </Button>
+              <div className="pt-4 border-t border-border">
+                <div className="flex items-center space-x-2 text-sm text-muted-foreground mb-3">
+                  <Phone className="h-4 w-4" />
+                  <span>+30 275 222 0223</span>
+                </div>
+                <EnhancedButton asChild size="sm" className="w-full">
+                  <Link to="/submit-property">Υποβολή Ακινήτου</Link>
+                </EnhancedButton>
               </div>
             </div>
           </div>
