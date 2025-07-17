@@ -25,6 +25,18 @@ const Header = () => {
               Αρχική
             </Link>
             <Link 
+              to="/about" 
+              className="text-primary hover:text-accent transition-colors font-medium"
+            >
+              Γιατί Key-Host
+            </Link>
+            <Link 
+              to="/services" 
+              className="text-primary hover:text-accent transition-colors font-medium"
+            >
+              Υπηρεσίες
+            </Link>
+            <Link 
               to="/properties" 
               className="text-primary hover:text-accent transition-colors font-medium"
             >
