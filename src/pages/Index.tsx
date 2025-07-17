@@ -314,6 +314,95 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Property Promotion Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
+              Πώς Προωθούμε τα Ακίνητά σας
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Χρησιμοποιούμε σύγχρονες τεχνικές μάρκετινγκ για να αυξήσουμε την ορατότητα 
+              και τις κρατήσεις των ακινήτων σας.
+            </p>
+          </div>
+
+          {/* Instagram Reels Section */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold text-primary text-center mb-8">
+              Ο CEO μας σας ξεναγεί στα ακίνητά μας
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Reel 1 Placeholder */}
+              <div className="aspect-[9/16] bg-muted rounded-lg flex items-center justify-center">
+                <div className="text-center text-muted-foreground">
+                  <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                  <p className="text-sm">Instagram Reel 1</p>
+                  <p className="text-xs">Προβολή ακινήτου</p>
+                </div>
+              </div>
+
+              {/* Reel 2 Placeholder */}
+              <div className="aspect-[9/16] bg-muted rounded-lg flex items-center justify-center">
+                <div className="text-center text-muted-foreground">
+                  <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                  <p className="text-sm">Instagram Reel 2</p>
+                  <p className="text-xs">Ξενάγηση με CEO</p>
+                </div>
+              </div>
+
+              {/* Reel 3 Placeholder */}
+              <div className="aspect-[9/16] bg-muted rounded-lg flex items-center justify-center">
+                <div className="text-center text-muted-foreground">
+                  <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </div>
+                  <p className="text-sm">Instagram Reel 3</p>
+                  <p className="text-xs">Παρουσίαση χώρου</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Promotion Methods */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card className="text-center p-6">
+              <Camera className="w-12 h-12 text-accent mx-auto mb-4" />
+              <h4 className="font-semibold text-primary mb-2">Επαγγελματικές Φωτογραφίες</h4>
+              <p className="text-sm text-muted-foreground">Υψηλής ποιότητας φωτογραφίες που αναδεικνύουν το ακίνητο</p>
+            </Card>
+
+            <Card className="text-center p-6">
+              <Share2 className="w-12 h-12 text-accent mx-auto mb-4" />
+              <h4 className="font-semibold text-primary mb-2">Social Media Marketing</h4>
+              <p className="text-sm text-muted-foreground">Προώθηση σε Instagram, Facebook και άλλες πλατφόρμες</p>
+            </Card>
+
+            <Card className="text-center p-6">
+              <TrendingUp className="w-12 h-12 text-accent mx-auto mb-4" />
+              <h4 className="font-semibold text-primary mb-2">SEO Optimization</h4>
+              <p className="text-sm text-muted-foreground">Βελτιστοποίηση για μηχανές αναζήτησης</p>
+            </Card>
+
+            <Card className="text-center p-6">
+              <Users className="w-12 h-12 text-accent mx-auto mb-4" />
+              <h4 className="font-semibold text-primary mb-2">Δίκτυο Πελατών</h4>
+              <p className="text-sm text-muted-foreground">Πρόσβαση σε μεγάλο δίκτυο επαναλαμβανόμενων πελατών</p>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Portfolio Section - Preview */}
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
