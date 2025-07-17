@@ -167,14 +167,125 @@ const Index = () => {
 
       {/* Portfolio Section */}
       <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-primary mb-8">
             Πελατολόγιο
           </h2>
-          <p className="text-xl text-muted-foreground">
-            Εκατοντάδες διανυκτερεύσεις κάθε μήνα. Ικανοποιημένοι ιδιοκτήτες σε 
-            Ναύπλιο, Αθήνα και δημοφιλείς προορισμούς.
+          <p className="text-xl text-center text-muted-foreground mb-12">
+            Εκατοντάδες διανυκτερεύσεις κάθε μήνα. Ικανοποιημένοι ιδιοκτήτες στο Ναύπλιο.
           </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Property 1 */}
+            <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="aspect-video bg-muted">
+                <img 
+                  src="https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                  alt="Παραδοσιακό σπίτι Ναύπλιο"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold text-primary mb-2">
+                  Παραδοσιακό Σπίτι στην Παλιά Πόλη
+                </h3>
+                <p className="text-muted-foreground text-sm mb-3">
+                  Ναύπλιο • 2 υπνοδωμάτια • 4 επισκέπτες
+                </p>
+                <p className="text-sm">
+                  Αυθεντικό σπίτι με θέα στο κάστρο, στην καρδιά της παλιάς πόλης.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Property 2 */}
+            <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="aspect-video bg-muted">
+                <img 
+                  src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                  alt="Διαμέρισμα με θέα"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold text-primary mb-2">
+                  Σύγχρονο Διαμέρισμα με Θέα
+                </h3>
+                <p className="text-muted-foreground text-sm mb-3">
+                  Ναύπλιο • 1 υπνοδωμάτιο • 2 επισκέπτες
+                </p>
+                <p className="text-sm">
+                  Μοντέρνο διαμέρισμα με πανοραμική θέα στον Αργολικό κόλπο.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Property 3 */}
+            <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="aspect-video bg-muted">
+                <img 
+                  src="https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                  alt="Βίλα κοντά στη θάλασσα"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold text-primary mb-2">
+                  Βίλα κοντά στη Θάλασσα
+                </h3>
+                <p className="text-muted-foreground text-sm mb-3">
+                  Ναύπλιο • 3 υπνοδωμάτια • 6 επισκέπτες
+                </p>
+                <p className="text-sm">
+                  Πολυτελής βίλα με πισίνα, 5 λεπτά από την παραλία.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Property 4 */}
+            <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="aspect-video bg-muted">
+                <img 
+                  src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                  alt="Στούντιο στο κέντρο"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold text-primary mb-2">
+                  Στούντιο στο Κέντρο
+                </h3>
+                <p className="text-muted-foreground text-sm mb-3">
+                  Ναύπλιο • Στούντιο • 2 επισκέπτες
+                </p>
+                <p className="text-sm">
+                  Άνετο στούντιο στο κέντρο, κοντά σε εστιατόρια και καφέ.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Property 5 */}
+            <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              <div className="aspect-video bg-muted">
+                <img 
+                  src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                  alt="Μεζονέτα με κήπο"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold text-primary mb-2">
+                  Μεζονέτα με Κήπο
+                </h3>
+                <p className="text-muted-foreground text-sm mb-3">
+                  Ναύπλιο • 2 υπνοδωμάτια • 5 επισκέπτες
+                </p>
+                <p className="text-sm">
+                  Ευρύχωρη μεζονέτα με ιδιωτικό κήπο και BBQ.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
