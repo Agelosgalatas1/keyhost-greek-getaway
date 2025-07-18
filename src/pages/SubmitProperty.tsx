@@ -151,49 +151,21 @@ const SubmitProperty = () => {
       <section className="py-20 bg-gradient-hero">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Submit Your Property
+            Υποβολή Ακινήτου
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground">
-            Tell us about your property and we'll provide a free analysis of its earning potential
+            Πείτε μας λίγα λόγια για το ακίνητό σας και θα σας προσφέρουμε μια δωρεάν ανάλυση του εισοδηματικού του δυναμικού.
           </p>
         </div>
       </section>
 
-      {/* Benefits */}
-      <section className="py-12 bg-background">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            <Card className="text-center">
-              <CardContent className="p-6">
-                <CheckCircle className="h-12 w-12 text-accent mx-auto mb-4" />
-                <h3 className="font-semibold mb-2">Free Property Analysis</h3>
-                <p className="text-sm text-muted-foreground">Detailed revenue potential assessment</p>
-              </CardContent>
-            </Card>
-            <Card className="text-center">
-              <CardContent className="p-6">
-                <CheckCircle className="h-12 w-12 text-accent mx-auto mb-4" />
-                <h3 className="font-semibold mb-2">24h Response Time</h3>
-                <p className="text-sm text-muted-foreground">We'll contact you within one business day</p>
-              </CardContent>
-            </Card>
-            <Card className="text-center">
-              <CardContent className="p-6">
-                <CheckCircle className="h-12 w-12 text-accent mx-auto mb-4" />
-                <h3 className="font-semibold mb-2">No Commitment</h3>
-                <p className="text-sm text-muted-foreground">Get insights with no obligation</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
 
       {/* Form Section */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-3xl mx-auto px-4">
           <Card className="shadow-elegant">
             <CardHeader>
-              <CardTitle className="text-2xl font-bold text-center">Property Submission Form</CardTitle>
+              <CardTitle className="text-2xl font-bold text-center">Φόρμα Υποβολής Ακινήτου</CardTitle>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -201,11 +173,11 @@ const SubmitProperty = () => {
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold flex items-center">
                     <Users className="h-5 w-5 mr-2 text-accent" />
-                    Personal Information
+                    Προσωπικές Πληροφορίες
                   </h3>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="name">Full Name *</Label>
+                      <Label htmlFor="name">Όνομα *</Label>
                       <Input
                         id="name"
                         value={formData.name}
@@ -215,7 +187,7 @@ const SubmitProperty = () => {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="email">Email Address *</Label>
+                      <Label htmlFor="email">Διεύθυνση Email *</Label>
                       <Input
                         id="email"
                         type="email"
@@ -227,7 +199,7 @@ const SubmitProperty = () => {
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="phone">Phone Number *</Label>
+                    <Label htmlFor="phone">Τηλέφωνο *</Label>
                     <Input
                       id="phone"
                       type="tel"
@@ -243,11 +215,11 @@ const SubmitProperty = () => {
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold flex items-center">
                     <Home className="h-5 w-5 mr-2 text-accent" />
-                    Property Information
+                    Πληροφορίες Ακινήτου
                   </h3>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="propertyLocation">Property Location *</Label>
+                      <Label htmlFor="propertyLocation">Τοποθεσία Ακινήτου *</Label>
                       <Select value={formData.propertyLocation} onValueChange={(value) => handleInputChange('propertyLocation', value)}>
                         <SelectTrigger>
                           <SelectValue placeholder="Select location" />
@@ -262,7 +234,7 @@ const SubmitProperty = () => {
                       </Select>
                     </div>
                     <div>
-                      <Label htmlFor="propertyType">Property Type *</Label>
+                      <Label htmlFor="propertyType">Τύπος Ακινήτου *</Label>
                       <Select value={formData.propertyType} onValueChange={(value) => handleInputChange('propertyType', value)}>
                         <SelectTrigger>
                           <SelectValue placeholder="Select property type" />
@@ -279,7 +251,7 @@ const SubmitProperty = () => {
                   </div>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="squareMeters">Square Meters *</Label>
+                      <Label htmlFor="squareMeters">Τετραγωνικά Μέτρα *</Label>
                       <Input
                         id="squareMeters"
                         type="number"
@@ -290,7 +262,7 @@ const SubmitProperty = () => {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="maxGuests">Maximum Guests *</Label>
+                      <Label htmlFor="maxGuests">Μέγιστος Αριθμός Επισκεπτών *</Label>
                       <Input
                         id="maxGuests"
                         type="number"
@@ -300,16 +272,6 @@ const SubmitProperty = () => {
                         placeholder="e.g. 4"
                       />
                     </div>
-                  </div>
-                  <div>
-                    <Label htmlFor="listingLink">Existing Listing Link (Optional)</Label>
-                    <Input
-                      id="listingLink"
-                      type="url"
-                      value={formData.listingLink}
-                      onChange={(e) => handleInputChange('listingLink', e.target.value)}
-                      placeholder="https://airbnb.com/..."
-                    />
                   </div>
                 </div>
 
@@ -396,37 +358,25 @@ const SubmitProperty = () => {
       {/* Contact Alternatives */}
       <section className="py-16 bg-background">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6">Prefer to Talk Directly?</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-6">Προτιμάτε να μιλήσουμε απευθείας;</h2>
           <p className="text-muted-foreground mb-8">
-            Our team is ready to discuss your property and answer any questions you may have.
+            Η ομάδα μας είναι έτοιμη να συζητήσει το ακίνητό σας και να απαντήσει σε τυχόν ερωτήσεις σας.
           </p>
           <div className="grid md:grid-cols-3 gap-6">
             <Card className="hover:shadow-elegant transition-shadow">
               <CardContent className="p-6 text-center">
                 <Phone className="h-8 w-8 text-accent mx-auto mb-4" />
-                <h3 className="font-semibold mb-2">Call Us</h3>
+                <h3 className="font-semibold mb-2">Καλέστε μας</h3>
                 <p className="text-muted-foreground text-sm mb-3">Mon-Fri 9AM-6PM</p>
-                <p className="font-medium">+30 123 456 7890</p>
+                <p className="font-medium">‭2752 220223‬</p>
               </CardContent>
             </Card>
             <Card className="hover:shadow-elegant transition-shadow">
               <CardContent className="p-6 text-center">
                 <Mail className="h-8 w-8 text-accent mx-auto mb-4" />
-                <h3 className="font-semibold mb-2">Email Us</h3>
+                <h3 className="font-semibold mb-2">Στείλτε μας Email</h3>
                 <p className="text-muted-foreground text-sm mb-3">24/7 Response</p>
                 <p className="font-medium">info@keyhost.gr</p>
-              </CardContent>
-            </Card>
-            <Card className="hover:shadow-elegant transition-shadow">
-              <CardContent className="p-6 text-center">
-                <MessageSquare className="h-8 w-8 text-accent mx-auto mb-4" />
-                <h3 className="font-semibold mb-2">WhatsApp</h3>
-                <p className="text-muted-foreground text-sm mb-3">Instant Messaging</p>
-                <EnhancedButton asChild variant="outline" size="sm">
-                  <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="inline-flex items-center">
-                    Chat Now <ExternalLink className="h-4 w-4 ml-1" />
-                  </a>
-                </EnhancedButton>
               </CardContent>
             </Card>
           </div>

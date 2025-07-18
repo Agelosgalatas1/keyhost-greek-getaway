@@ -63,17 +63,6 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Services */}
-            <div className="space-y-4">
-              <h4 className="text-lg font-semibold text-black">Υπηρεσίες</h4>
-              <ul className="space-y-2">
-                {services.map((service, index) => (
-                  <li key={index} className="text-black/80 text-sm">
-                    {service}
-                  </li>
-                ))}
-              </ul>
-            </div>
 
             {/* Contact Info */}
             <div className="space-y-4">
@@ -81,11 +70,11 @@ const Footer = () => {
               <div className="space-y-3">
                 <div className="flex items-center space-x-2">
                   <MapPin className="h-4 w-4 text-accent" />
-                  <span className="text-black/80 text-sm">Αθήνα, Ελλάδα</span>
+                  <span className="text-black/80 text-sm">Ναύπλιο, Ελλάδα</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Phone className="h-4 w-4 text-accent" />
-                  <span className="text-black/80 text-sm">+30 210 123 4567</span>
+                  <span className="text-black/80 text-sm">‭2752 220223‬</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Mail className="h-4 w-4 text-accent" />
@@ -98,7 +87,7 @@ const Footer = () => {
           {/* Bottom Section */}
           <div className="border-t border-black/20 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
             <p className="text-black/60 text-sm">
-              © 2024 Key-Host. Όλα τα δικαιώματα προστατευμένα.
+              © 2025 Key-Host. Όλα τα δικαιώματα προστατευμένα.
             </p>
             
             {/* Admin Section */}
