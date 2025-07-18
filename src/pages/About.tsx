@@ -36,20 +36,20 @@ const About = () => {
       description: "Κάθε ακίνητο αποκτά επαγγελματική φωτογράφιση, επιμελημένη διαμόρφωση και περιγραφές που ξεχωρίζουν. Αυτή η προσοχή στη λεπτομέρεια προσελκύει ποιοτικούς επισκέπτες, δικαιολογεί υψηλότερες τιμές και φέρνει περισσότερες θετικές κριτικές."
     },
     {
-      title: "Revenue Optimization",
-      description: "We adjust your pricing daily based on real-time data — seasonality, local events, competitor rates, and booking demand. This data-driven approach consistently outperforms static pricing, often increasing revenue by 15-25%."
+      title: "Βελτιστοποίηση Εσόδων",
+      description: "Ρυθμίζουμε δυναμικά τις τιμές σας καθημερινά, με βάση δεδομένα σε πραγματικό χρόνο — εποχικότητα, τοπικά events, τιμές ανταγωνισμού και τη ζήτηση κρατήσεων. Αυτή η στρατηγική βασισμένη στα δεδομένα ξεπερνά σταθερές τιμές, αυξάνοντας συχνά τα έσοδα κατά 15–25%."
     },
     {
-      title: "Maintenance & Repairs Network",
-      description: "Our trusted network of local cleaners, technicians, and tradespeople keeps your property in pristine condition. From routine maintenance to emergency repairs, we handle everything without requiring your time or presence."
+      title: "Δίκτυο Συντήρησης & Επισκευών",
+      description: "Η αξιόπιστη ομάδα μας από τοπικά συνεργεία καθαρισμού, τεχνικούς και επαγγελματίες φροντίζει το ακίνητό σας να παραμένει σε άριστη κατάσταση. Από τη συντήρηση ρουτίνας μέχρι επείγουσες επισκευές — αναλαμβάνουμε τα πάντα, χωρίς να απαιτείται η παρουσία ή ο χρόνος σας."
     },
     {
-      title: "Transparent Reporting",
-      description: "Receive clear monthly reports covering bookings, revenue, expenses, and property updates. You'll always know exactly how your investment is performing without having to track countless details yourself."
+      title: "Διαφάνεια & Αναφορές",
+      description: "Λαμβάνετε μηνιαίες αναφορές με σαφή στοιχεία για κρατήσεις, έσοδα, έξοδα και ενημερώσεις για το ακίνητό σας. Έτσι, γνωρίζετε πάντα πώς αποδίδει η επένδυσή σας — χωρίς να χρειάζεται να παρακολουθείτε κάθε λεπτομέρεια μόνοι σας."
     },
     {
-      title: "Legal & Tax Support",
-      description: "We help you navigate Greece's short-term rental regulations, tax obligations, and required documentation. Stay compliant with local laws while we handle the paperwork, permits, and government reporting."
+      title: "Νομική & Φορολογική Υποστήριξη",
+      description: "Σας βοηθάμε να πλοηγηθείτε στο νομοθετικό και φορολογικό πλαίσιο της βραχυχρόνιας μίσθωσης στην Ελλάδα. Φροντίζουμε για τα απαραίτητα έγγραφα, τις άδειες και τις δηλώσεις προς το κράτος, ώστε να είστε πλήρως νόμιμοι — χωρίς να μπλέκεστε με τη γραφειοκρατία."
     }
   ];
 
@@ -114,24 +114,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Meet Our Team</h2>
-          <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            Our diverse team combines local knowledge, international experience, and genuine passion for hospitality to deliver exceptional results.
-          </p>
-          
-          <div className="bg-background rounded-lg p-8 shadow-elegant">
-            <Users className="h-16 w-16 text-accent mx-auto mb-6" />
-            <h3 className="text-2xl font-semibold mb-4">Professional Team of 15</h3>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              From property managers and guest coordinators to cleaning teams and maintenance specialists, 
-              every team member is carefully selected and trained to uphold our standards of excellence.
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-primary text-primary-foreground">
