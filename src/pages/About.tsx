@@ -83,20 +83,12 @@ const About = () => {
             <div className="bg-muted/30 rounded-lg p-8">
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-accent mb-2">2020</div>
+                  <div className="text-4xl font-bold text-accent mb-2">2024</div>
                   <p className="text-muted-foreground">Founded</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-accent mb-2">150+</div>
+                  <div className="text-4xl font-bold text-accent mb-2">25+</div>
                   <p className="text-muted-foreground">Properties</p>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-accent mb-2">15</div>
-                  <p className="text-muted-foreground">Team Members</p>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-accent mb-2">8</div>
-                  <p className="text-muted-foreground">Greek Islands</p>
                 </div>
               </div>
             </div>
@@ -104,29 +96,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Our Mission */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Mission</h2>
-          <p className="text-xl text-muted-foreground max-w-4xl mx-auto mb-12">
-            To transform property ownership into truly passive income by providing comprehensive, professional management services that maximize returns while maintaining the highest standards of hospitality.
-          </p>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {values.map((value, index) => (
-              <Card key={index} className="text-center hover:shadow-elegant transition-shadow">
-                <CardContent className="p-8">
-                  <div className="bg-gradient-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <value.icon className="h-8 w-8 text-primary-foreground" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-4">{value.title}</h3>
-                  <p className="text-muted-foreground">{value.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Why Choose Us */}
       <section className="py-16 bg-background">
