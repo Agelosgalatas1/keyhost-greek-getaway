@@ -30,13 +30,13 @@ const Footer = () => {
   
   return (
     <>
-      <footer className="bg-primary text-primary-foreground">
+      <footer className="bg-primary text-black">
         <div className="max-w-7xl mx-auto px-4 py-12">
           <div className="grid md:grid-cols-4 gap-8">
             {/* Company Info */}
             <div className="space-y-4">
-              <h3 className="text-xl font-bold text-accent">Key-Host</h3>
-              <p className="text-primary-foreground/80">
+              <h3 className="text-xl font-bold text-black">Key-Host</h3>
+              <p className="text-black/80">
                 Επαγγελματική διαχείριση βραχυχρόνιων μισθώσεων στην Ελλάδα
               </p>
               <div className="flex space-x-4">
@@ -48,13 +48,13 @@ const Footer = () => {
 
             {/* Quick Links */}
             <div className="space-y-4">
-              <h4 className="text-lg font-semibold">Γρήγορες Συνδέσεις</h4>
+              <h4 className="text-lg font-semibold text-black">Γρήγορες Συνδέσεις</h4>
               <ul className="space-y-2">
                 {quickLinks.map((link) => (
                   <li key={link.href}>
                     <Link 
                       to={link.href} 
-                      className="text-primary-foreground/80 hover:text-accent transition-colors"
+                      className="text-black/80 hover:text-accent transition-colors"
                     >
                       {link.name}
                     </Link>
@@ -65,10 +65,10 @@ const Footer = () => {
 
             {/* Services */}
             <div className="space-y-4">
-              <h4 className="text-lg font-semibold">Υπηρεσίες</h4>
+              <h4 className="text-lg font-semibold text-black">Υπηρεσίες</h4>
               <ul className="space-y-2">
                 {services.map((service, index) => (
-                  <li key={index} className="text-primary-foreground/80 text-sm">
+                  <li key={index} className="text-black/80 text-sm">
                     {service}
                   </li>
                 ))}
@@ -77,27 +77,27 @@ const Footer = () => {
 
             {/* Contact Info */}
             <div className="space-y-4">
-              <h4 className="text-lg font-semibold">Επικοινωνία</h4>
+              <h4 className="text-lg font-semibold text-black">Επικοινωνία</h4>
               <div className="space-y-3">
                 <div className="flex items-center space-x-2">
                   <MapPin className="h-4 w-4 text-accent" />
-                  <span className="text-primary-foreground/80 text-sm">Αθήνα, Ελλάδα</span>
+                  <span className="text-black/80 text-sm">Αθήνα, Ελλάδα</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Phone className="h-4 w-4 text-accent" />
-                  <span className="text-primary-foreground/80 text-sm">+30 210 123 4567</span>
+                  <span className="text-black/80 text-sm">+30 210 123 4567</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Mail className="h-4 w-4 text-accent" />
-                  <span className="text-primary-foreground/80 text-sm">info@key-host.gr</span>
+                  <span className="text-black/80 text-sm">info@key-host.gr</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Bottom Section */}
-          <div className="border-t border-primary-foreground/20 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-primary-foreground/60 text-sm">
+          <div className="border-t border-black/20 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-black/60 text-sm">
               © 2024 Key-Host. Όλα τα δικαιώματα προστατευμένα.
             </p>
             
@@ -108,7 +108,7 @@ const Footer = () => {
                   variant="ghost"
                   size="sm"
                   onClick={signOut}
-                  className="text-primary-foreground/60 hover:text-primary-foreground hover:bg-primary-foreground/10"
+                  className="text-black/60 hover:text-black hover:bg-black/10"
                 >
                   Admin Logout
                 </Button>
@@ -117,7 +117,7 @@ const Footer = () => {
                   variant="ghost"
                   size="sm"
                   onClick={() => setShowAdminLogin(true)}
-                  className="text-primary-foreground/60 hover:text-primary-foreground hover:bg-primary-foreground/10"
+                  className="text-black/60 hover:text-black hover:bg-black/10"
                 >
                   <Settings className="h-4 w-4 mr-1" />
                   Admin
