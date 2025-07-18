@@ -55,14 +55,6 @@ const About = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-hero">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Σχετικά με Εμάς
-          </h1>
-        </div>
-      </section>
 
       {/* Our Story */}
       <section className="py-16 bg-background">
@@ -115,25 +107,6 @@ const About = () => {
       </section>
 
 
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-primary text-primary-foreground">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Partner With Us?
-          </h2>
-          <p className="text-xl mb-8 text-primary-foreground/90">
-            Join the growing community of property owners who have discovered the freedom of truly passive income.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <EnhancedButton asChild variant="outline" size="xl" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-              <Link to="/submit-property">Submit Your Property</Link>
-            </EnhancedButton>
-            <EnhancedButton asChild variant="ghost" size="xl" className="text-primary-foreground hover:bg-primary-foreground/10">
-              <Link to="/contact">Contact Us</Link>
-            </EnhancedButton>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
