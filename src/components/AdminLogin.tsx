@@ -29,25 +29,19 @@ export const AdminLogin = ({ isOpen, onClose, onLoginSuccess }: AdminLoginProps)
   const onSubmit = async (data: LoginForm) => {
     setIsLoading(true);
     try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email: data.email,
-        password: data.password,
-      });
+      // Use direct database authentication for admin
+      const { data: adminUser, error } = await supabase
+        .rpc('authenticate_admin', {
+          admin_email: data.email,
+          admin_password: data.password
+        });
 
-      if (error) throw error;
-
-      // Check if user is admin
-      const { data: adminUser, error: adminError } = await supabase
-        .from('admin_users')
-        .select('*')
-        .eq('email', data.email)
-        .eq('is_active', true)
-        .single();
-
-      if (adminError || !adminUser) {
-        await supabase.auth.signOut();
-        throw new Error('Unauthorized: Admin access required');
+      if (error || !adminUser || adminUser.length === 0) {
+        throw new Error('Invalid login credentials');
       }
+
+      // Store admin session in localStorage for this simple admin system
+      localStorage.setItem('adminUser', JSON.stringify(adminUser[0]));
 
       toast({
         title: "Successful Login",
@@ -57,10 +51,13 @@ export const AdminLogin = ({ isOpen, onClose, onLoginSuccess }: AdminLoginProps)
       reset();
       onLoginSuccess();
       onClose();
+      
+      // Refresh the page to update admin state
+      window.location.reload();
     } catch (error: any) {
       toast({
         title: "Login Failed",
-        description: error.message || "Invalid credentials",
+        description: error.message || "Invalid login credentials",
         variant: "destructive",
       });
     } finally {

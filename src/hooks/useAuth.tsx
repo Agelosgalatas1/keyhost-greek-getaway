@@ -19,14 +19,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Get initial session
+    // Check for admin session in localStorage
+    const checkAdminSession = () => {
+      const adminUser = localStorage.getItem('adminUser');
+      if (adminUser) {
+        setIsAdmin(true);
+      }
+      setLoading(false);
+    };
+
+    // Get initial session for regular auth
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setUser(session?.user ?? null);
       if (session?.user) {
         checkAdminStatus(session.user.email!);
       } else {
-        setLoading(false);
+        checkAdminSession();
       }
     });
 
@@ -40,7 +49,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           await checkAdminStatus(session.user.email!);
         } else {
           setIsAdmin(false);
-          setLoading(false);
+          checkAdminSession();
         }
       }
     );
@@ -59,15 +68,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       setIsAdmin(!!adminUser);
     } catch (error) {
-      setIsAdmin(false);
+      // Check localStorage as fallback
+      const adminUser = localStorage.getItem('adminUser');
+      setIsAdmin(!!adminUser);
     } finally {
       setLoading(false);
     }
   };
 
   const signOut = async () => {
+    // Clear admin session
+    localStorage.removeItem('adminUser');
+    // Clear regular auth session
     await supabase.auth.signOut();
     setIsAdmin(false);
+    setUser(null);
+    setSession(null);
   };
 
   return (
