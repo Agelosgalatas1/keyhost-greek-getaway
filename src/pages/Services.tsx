@@ -117,11 +117,8 @@ const Services = () => {
       <section className="py-20 bg-gradient-hero">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Our Services
+            Οι υπηρεσίες μας
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-            Comprehensive property management services designed to maximize your returns while minimizing your involvement
-          </p>
         </div>
       </section>
 
@@ -129,10 +126,7 @@ const Services = () => {
       <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Core Management Services</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Everything you need for successful short-term rental management, handled by our expert team
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Οι υπηρεσίες μας</h2>
           </div>
           
           <div className="space-y-4">

@@ -24,28 +24,27 @@ const Home = () => {
   ];
 
   const stats = [
-    { number: "150+", label: "Ακίνητα υπό Διαχείριση" },
+    { number: "25+", label: "Ακίνητα υπό Διαχείριση" },
     { number: "98%", label: "Ικανοποίηση Επισκεπτών" },
-    { number: "8", label: "Ελληνικά Νησιά" },
     { number: "24/7", label: "Διαθέσιμη Υποστήριξη" }
   ];
 
   const testimonials = [
     {
-      name: "Μαρία Κώστα",
-      location: "Ιδιοκτήτρια Βίλας Σαντορίνης",
+      name: "",
+      location: "Ιδιοκτήτρια Βίλας Ναύπλιο",
       rating: 5,
       text: "Η Key-Host μετέτρεψε το ακίνητό μου σε κερδοφόρα επένδυση. Η προσοχή στη λεπτομέρεια και η εξυπηρέτηση είναι εξαιρετική."
     },
     {
-      name: "Δημήτρης Παπαδόπουλος", 
-      location: "Ιδιοκτήτης Διαμερίσματος Αθήνας",
+      name: "", 
+      location: "Ιδιοκτήτης Διαμερίσματος Ναύπλιο",
       rating: 5,
       text: "Επαγγελματικοί, αξιόπιστοι και διαφανείς. Κερδίζω 40% περισσότερα από ό,τι όταν το διαχειριζόμουν μόνος μου, χωρίς κανένα πρόβλημα."
     },
     {
-      name: "Έλενα Μιχάλη",
-      location: "Ιδιοκτήτρια Ακινήτου Μυκόνου", 
+      name: "",
+      location: "Ιδιοκτήτρια Ακινήτου Τολό", 
       rating: 5,
       text: "Η καλύτερη απόφαση που πήρα ήταν να εμπιστευτώ την Key-Host. Χειρίζονται τα πάντα ενώ εγώ απολαμβάνω παθητικό εισόδημα."
     }
@@ -166,7 +165,6 @@ const Home = () => {
                     "{testimonial.text}"
                   </blockquote>
                   <div>
-                    <p className="font-semibold">{testimonial.name}</p>
                     <p className="text-sm text-muted-foreground">{testimonial.location}</p>
                   </div>
                 </CardContent>
@@ -294,19 +292,19 @@ const Home = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 bg-gradient-primary text-primary-foreground">
+      <section className="py-16 bg-gradient-primary">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
             Έτοιμοι να Ξεκινήσετε να Κερδίζετε Παθητικό Εισόδημα;
           </h2>
-          <p className="text-xl mb-8 text-primary-foreground/90">
+          <p className="text-xl mb-8 text-white/90">
             Γίνετε μέλος της αυξανόμενης κοινότητας ιδιοκτητών ακινήτων που ανακάλυψαν την ελευθερία του πραγματικά παθητικού εισοδήματος.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <EnhancedButton asChild variant="outline" size="xl" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+            <EnhancedButton asChild variant="outline" size="xl" className="border-white text-white hover:bg-white hover:text-primary">
               <Link to="/submit-property">Υποβολή Ακινήτου</Link>
             </EnhancedButton>
-            <EnhancedButton asChild variant="ghost" size="xl" className="text-primary-foreground hover:bg-primary-foreground/10">
+            <EnhancedButton asChild variant="ghost" size="xl" className="text-white hover:bg-white/10">
               <Link to="/contact">Επικοινωνία</Link>
             </EnhancedButton>
           </div>
