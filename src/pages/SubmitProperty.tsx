@@ -277,7 +277,7 @@ const SubmitProperty = () => {
 
                 {/* Photo Upload */}
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold">Property Photos (Max 5)</h3>
+                  <h3 className="text-lg font-semibold">Φωτογραφίες Ακινήτου</h3>
                   <div className="border-2 border-dashed border-border rounded-lg p-6 text-center">
                     <Upload className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
                     <div className="space-y-2">
@@ -327,7 +327,7 @@ const SubmitProperty = () => {
 
                 {/* Additional Notes */}
                 <div>
-                  <Label htmlFor="notes">Additional Notes (Optional)</Label>
+                  <Label htmlFor="notes">Πρόσθετες Σημειώσεις (Προαιρετικό)</Label>
                   <Textarea
                     id="notes"
                     value={formData.notes}
@@ -346,7 +346,7 @@ const SubmitProperty = () => {
                     disabled={isSubmitting}
                     className="w-full md:w-auto"
                   >
-                    {isSubmitting ? 'Submitting...' : 'Submit Property for Analysis'}
+                    {isSubmitting ? 'Submitting...' : 'Υποβολή ακινήτου για ανάλυση'}
                   </EnhancedButton>
                 </div>
               </form>
