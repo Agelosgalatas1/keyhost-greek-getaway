@@ -24,20 +24,16 @@ const About = () => {
 
   const whyChooseUs = [
     {
-      title: "Local Market Expertise",
-      description: "Our team deeply understands Greece's vacation rental landscape — from seasonal pricing patterns to local regulations and guest expectations. This knowledge helps you price competitively, avoid costly mistakes, and maximize occupancy rates year-round."
+      title: "Τοπική Εξειδίκευση στην Αγορά",
+      description: "Η ομάδα μας κατανοεί σε βάθος το τοπίο των βραχυχρόνιων μισθώσεων στην Ελλάδα — από τις εποχικές τάσεις τιμών μέχρι τη νομοθεσία και τις προσδοκίες των επισκεπτών. Αυτή η γνώση σας βοηθά να τιμολογείτε ανταγωνιστικά, να αποφεύγετε ακριβά λάθη και να πετυχαίνετε υψηλές πληρότητες όλο τον χρόνο."
     },
     {
-      title: "Multilingual Team",
-      description: "We communicate seamlessly with guests and owners in Greek, English, French, and German. This builds trust with international visitors, reduces booking hesitations, and ensures you never miss opportunities due to language barriers."
+      title: "Υποστήριξη Επισκεπτών 24/7",
+      description: "Οι επισκέπτες σας μπορούν να επικοινωνούν μαζί μας οποιαδήποτε στιγμή — μέρα ή νύχτα — για θέματα check-in, επείγουσες βλάβες ή απλές απορίες. Δεν θα ξαναξυπνήσετε ποτέ για ένα επείγον τηλεφώνημα ούτε θα περάσετε τα βράδια σας λύνοντας προβλήματα από απόσταση."
     },
     {
-      title: "24/7 Guest Support",
-      description: "Your guests can reach us anytime — day or night — for check-in issues, emergency repairs, or simple questions. You'll never wake up to urgent calls or spend your evenings troubleshooting problems from afar."
-    },
-    {
-      title: "Professional Presentation",
-      description: "Every property gets professional photography, expert staging, and compelling descriptions that make listings stand out. This attention to detail attracts quality guests, commands higher rates, and generates more positive reviews."
+      title: "Επαγγελματική Παρουσίαση",
+      description: "Κάθε ακίνητο αποκτά επαγγελματική φωτογράφιση, επιμελημένη διαμόρφωση και περιγραφές που ξεχωρίζουν. Αυτή η προσοχή στη λεπτομέρεια προσελκύει ποιοτικούς επισκέπτες, δικαιολογεί υψηλότερες τιμές και φέρνει περισσότερες θετικές κριτικές."
     },
     {
       title: "Revenue Optimization",
@@ -63,7 +59,7 @@ const About = () => {
       <section className="py-20 bg-gradient-hero">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            σχετικά με εμάς
+            Σχετικά με Εμάς
           </h1>
         </div>
       </section>
@@ -102,9 +98,6 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Choose Key Host?</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We're not just property managers – we're your partners in creating sustainable, profitable vacation rental businesses.
-            </p>
           </div>
           
           <div className="grid md:grid-cols-1 gap-8 max-w-5xl mx-auto">
