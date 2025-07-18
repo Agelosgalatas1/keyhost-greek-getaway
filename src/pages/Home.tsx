@@ -292,19 +292,19 @@ const Home = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 bg-gradient-primary">
+      <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
             Έτοιμοι να Ξεκινήσετε να Κερδίζετε Παθητικό Εισόδημα;
           </h2>
-          <p className="text-xl mb-8 text-white/90">
+          <p className="text-xl mb-8 text-muted-foreground">
             Γίνετε μέλος της αυξανόμενης κοινότητας ιδιοκτητών ακινήτων που ανακάλυψαν την ελευθερία του πραγματικά παθητικού εισοδήματος.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <EnhancedButton asChild variant="outline" size="xl" className="border-white text-white hover:bg-white hover:text-primary">
+            <EnhancedButton asChild variant="default" size="xl">
               <Link to="/submit-property">Υποβολή Ακινήτου</Link>
             </EnhancedButton>
-            <EnhancedButton asChild variant="ghost" size="xl" className="text-white hover:bg-white/10">
+            <EnhancedButton asChild variant="outline" size="xl">
               <Link to="/contact">Επικοινωνία</Link>
             </EnhancedButton>
           </div>
