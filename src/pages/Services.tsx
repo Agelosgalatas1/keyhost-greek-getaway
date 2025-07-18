@@ -83,7 +83,7 @@ const Services = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Maximize Your Property's Potential?
           </h2>
-          <p className="text-xl mb-8 text-primary-foreground/90">
+          <p className="text-xl mb-8 text-black">
             Let us handle the work while you enjoy guaranteed passive income from your property investment.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
