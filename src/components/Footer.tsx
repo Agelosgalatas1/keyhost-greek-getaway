@@ -40,8 +40,22 @@ const Footer = () => {
                 Επαγγελματική διαχείριση βραχυχρόνιων μισθώσεων στην Ελλάδα
               </p>
               <div className="flex space-x-4">
-                <Instagram className="h-5 w-5 hover:text-accent cursor-pointer transition-colors" />
-                <Facebook className="h-5 w-5 hover:text-accent cursor-pointer transition-colors" />
+                <a 
+                  href="https://www.instagram.com/keyhost.gr?igsh=MXZnNDdwYjZpc2I4Nw==" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-accent transition-colors"
+                >
+                  <Instagram className="h-5 w-5" />
+                </a>
+                <a 
+                  href="https://www.facebook.com/share/1Fxvt15ubf/?mibextid=wwXIfr" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-accent transition-colors"
+                >
+                  <Facebook className="h-5 w-5" />
+                </a>
                 <MessageCircle className="h-5 w-5 hover:text-accent cursor-pointer transition-colors" />
               </div>
             </div>

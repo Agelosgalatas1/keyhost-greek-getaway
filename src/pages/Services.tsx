@@ -90,7 +90,7 @@ const Services = () => {
             <EnhancedButton asChild variant="outline" size="xl" className="border-[#5ce3e4] text-[#5ce3e4] hover:bg-[#5ce3e4] hover:text-white">
               <Link to="/submit-property">Get Started Today</Link>
             </EnhancedButton>
-            <EnhancedButton asChild variant="ghost" size="xl" className="text-primary-foreground hover:bg-primary-foreground/10">
+            <EnhancedButton asChild variant="ghost" size="xl" className="text-black hover:bg-black/10">
               <Link to="/contact">Schedule Consultation</Link>
             </EnhancedButton>
           </div>
