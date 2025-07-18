@@ -63,11 +63,8 @@ const About = () => {
       <section className="py-20 bg-gradient-hero">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            About Key Host
+            σχετικά με εμάς
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-            We're passionate about helping property owners unlock the full potential of their Mediterranean investments
-          </p>
         </div>
       </section>
 
@@ -79,13 +76,7 @@ const About = () => {
               <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Story</h2>
               <div className="space-y-4 text-lg text-muted-foreground">
                 <p>
-                  Founded in Athens in 2020, Key Host emerged from a simple observation: property owners were spending countless hours managing their short-term rentals instead of enjoying the passive income they promised.
-                </p>
-                <p>
-                  Our founders, experienced hospitality professionals and property investors, created Key Host to bridge this gap. We combine local market knowledge with international hospitality standards to deliver exceptional results.
-                </p>
-                <p>
-                  Today, we manage over 150 properties across Greece's most sought-after destinations, from the cosmopolitan islands of Mykonos and Santorini to the historic neighborhoods of Athens and the pristine beaches of Crete.
+                  Η Key Host ιδρύθηκε το 2024 με σκοπό να απλοποιήσει τη βραχυχρόνια μίσθωση για ιδιοκτήτες ακινήτων. Προσφέρουμε πλήρη διαχείριση Airbnb, μετατρέποντας τα ακίνητα σε σταθερές πηγές εισοδήματος χωρίς καθόλου κόπο για τον ιδιοκτήτη. Η βάση μας είναι στο Ναύπλιο, αλλά εξυπηρετούμε ακίνητα σε όλη την Ελλάδα.
                 </p>
               </div>
             </div>
