@@ -11,7 +11,7 @@ const Header = () => {
     { name: 'Αρχική', href: '/' },
     { name: 'Γιατί Key-Host', href: '/about' },
     { name: 'Υπηρεσίες', href: '/services' },
-    { name: 'Πελατολόγιο', href: '/properties' },
+    { name: 'Συνεργάτες', href: '/properties' },
     { name: 'Επικοινωνία', href: '/contact' },
   ];
 

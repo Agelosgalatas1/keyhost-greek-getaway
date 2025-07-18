@@ -130,7 +130,7 @@ const Properties = () => {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-black">
-            Το Πελατολόγιό μας
+            Οι συνεργάτες μας
           </h1>
           <p className="text-xl md:text-2xl text-black/90 max-w-3xl mx-auto">
             Ανακαλύψτε τα εξαιρετικά ακίνητα που διαχειριζόμαστε σε όλη την Ελλάδα
@@ -195,7 +195,7 @@ const Properties = () => {
                 <h3 className="text-lg font-semibold text-primary">Admin Panel</h3>
                 <Button onClick={() => setShowPropertyForm(true)} className="gap-2">
                   <Plus className="h-4 w-4" />
-                  Add New Property
+                  Προσθήκη Νέου Ακινήτου
                 </Button>
               </div>
             </div>

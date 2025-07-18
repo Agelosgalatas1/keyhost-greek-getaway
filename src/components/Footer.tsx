@@ -19,7 +19,7 @@ const Footer = () => {
     name: 'Υπηρεσίες',
     href: '/services'
   }, {
-    name: 'Πελατολόγιο',
+    name: 'Συνεργάτες',
     href: '/properties'
   }, {
     name: 'Επικοινωνία',

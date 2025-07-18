@@ -87,7 +87,7 @@ const Home = () => {
             <EnhancedButton asChild size="xl" className="bg-accent hover:bg-accent/90 text-white border-0">
               <Link to="/submit-property">Ζήτησε Προσφορά</Link>
             </EnhancedButton>
-            <EnhancedButton asChild variant="outline" size="xl" className="border-white text-white hover:bg-white hover:text-primary-dark-blue">
+            <EnhancedButton asChild variant="outline" size="xl" className="border-white text-black bg-white hover:bg-white/90">
               <Link to="/services">Μάθε Περισσότερα</Link>
             </EnhancedButton>
           </div>
