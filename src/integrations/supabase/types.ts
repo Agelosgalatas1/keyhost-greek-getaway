@@ -14,7 +14,93 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      admin_users: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          is_active: boolean | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          is_active?: boolean | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          is_active?: boolean | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      properties: {
+        Row: {
+          amenities: string[] | null
+          bathrooms: number
+          bedrooms: number
+          category: string | null
+          created_at: string
+          description: string | null
+          guests: number
+          highlights: string[] | null
+          id: string
+          images: string[] | null
+          is_active: boolean | null
+          location: string
+          price: number | null
+          property_type: string | null
+          rating: number | null
+          reviews: number | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          amenities?: string[] | null
+          bathrooms?: number
+          bedrooms?: number
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          guests?: number
+          highlights?: string[] | null
+          id?: string
+          images?: string[] | null
+          is_active?: boolean | null
+          location: string
+          price?: number | null
+          property_type?: string | null
+          rating?: number | null
+          reviews?: number | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          amenities?: string[] | null
+          bathrooms?: number
+          bedrooms?: number
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          guests?: number
+          highlights?: string[] | null
+          id?: string
+          images?: string[] | null
+          is_active?: boolean | null
+          location?: string
+          price?: number | null
+          property_type?: string | null
+          rating?: number | null
+          reviews?: number | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

@@ -1,13 +1,24 @@
-import { useState } from 'react';
-import { MapPin, Users, Star, Wifi, Car, Waves, Mountain, Home } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { MapPin, Users, Star, Wifi, Car, Waves, Mountain, Home, Plus, Edit, Trash2 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { EnhancedButton } from '@/components/ui/enhanced-button';
 import { Link } from 'react-router-dom';
+import { supabase } from '@/integrations/supabase/client';
+import { useAuth } from '@/hooks/useAuth';
+import { PropertyForm } from '@/components/PropertyForm';
+import { useToast } from '@/hooks/use-toast';
 
 const Properties = () => {
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [selectedGuests, setSelectedGuests] = useState('all');
+  const [properties, setProperties] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [showPropertyForm, setShowPropertyForm] = useState(false);
+  const [editingProperty, setEditingProperty] = useState(null);
+  const { isAdmin } = useAuth();
+  const { toast } = useToast();
 
   const filters = [
     { id: 'all', label: 'Όλα τα Ακίνητα' },
@@ -26,92 +37,62 @@ const Properties = () => {
     { id: '8+', label: '8+ άτομα' }
   ];
 
-  const properties = [
-    {
-      id: 1,
-      title: "Σαντορίνη Sunset Villa",
-      location: "Οία, Σαντορίνη",
-      type: "villa",
-      guests: 6,
-      rating: 4.9,
-      reviews: 127,
-      price: "€320",
-      image: "/placeholder.svg",
-      highlights: ["Θέα Ηλιοβασιλέματος", "Ιδιωτική Πισίνα", "5 λεπτά από Οία"],
-      amenities: ["Wifi", "Parking", "Pool"],
-      category: "santorini"
-    },
-    {
-      id: 2,
-      title: "Μύκονος Beach House",
-      location: "Πλατύς Γιαλός, Μύκονος",
-      type: "house",
-      guests: 8,
-      rating: 4.8,
-      reviews: 89,
-      price: "€450",
-      image: "/placeholder.svg",
-      highlights: ["Πρόσβαση στην Παραλία", "Σύγχρονη Διακόσμηση", "BBQ Area"],
-      amenities: ["Wifi", "Beach Access", "Parking"],
-      category: "mykonos"
-    },
-    {
-      id: 3,
-      title: "Αθήνα Central Loft",
-      location: "Κολωνάκι, Αθήνα",
-      type: "apartment",
-      guests: 4,
-      rating: 4.7,
-      reviews: 203,
-      price: "€150",
-      image: "/placeholder.svg",
-      highlights: ["Κέντρο Αθήνας", "Σύγχρονο Design", "Κοντά σε Μετρό"],
-      amenities: ["Wifi", "Metro Access", "Rooftop"],
-      category: "athens"
-    },
-    {
-      id: 4,
-      title: "Κρήτη Mountain Retreat",
-      location: "Χανιά, Κρήτη",
-      type: "villa",
-      guests: 10,
-      rating: 5.0,
-      reviews: 45,
-      price: "€280",
-      image: "/placeholder.svg",
-      highlights: ["Θέα Βουνού", "Παραδοσιακή Αρχιτεκτονική", "Ιδιωτικός Κήπος"],
-      amenities: ["Wifi", "Garden", "Mountain View"],
-      category: "crete"
-    },
-    {
-      id: 5,
-      title: "Ναύπλιο Historic House",
-      location: "Παλιά Πόλη, Ναύπλιο",
-      type: "house",
-      guests: 6,
-      rating: 4.8,
-      reviews: 156,
-      price: "€200",
-      image: "/placeholder.svg",
-      highlights: ["Ιστορικό Κέντρο", "Παραδοσιακή Διακόσμηση", "Θέα Κάστρου"],
-      amenities: ["Wifi", "Historic", "Castle View"],
-      category: "nafplio"
-    },
-    {
-      id: 6,
-      title: "Σαντορίνη Cave House",
-      location: "Φηρά, Σαντορίνη",
-      type: "cave house",
-      guests: 2,
-      rating: 4.9,
-      reviews: 78,
-      price: "€250",
-      image: "/placeholder.svg",
-      highlights: ["Παραδοσιακό Cave House", "Θέα Καλντέρας", "Ρομαντικό"],
-      amenities: ["Wifi", "Caldera View", "Traditional"],
-      category: "santorini"
+  const fetchProperties = async () => {
+    try {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from('properties')
+        .select('*')
+        .eq('is_active', true)
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+      setProperties(data || []);
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: "Failed to load properties",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
     }
-  ];
+  };
+
+  const handleDeleteProperty = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this property?')) return;
+
+    try {
+      const { error } = await supabase
+        .from('properties')
+        .update({ is_active: false })
+        .eq('id', id);
+
+      if (error) throw error;
+
+      toast({
+        title: "Property Deleted",
+        description: "Property has been successfully deleted",
+      });
+      
+      fetchProperties();
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: "Failed to delete property",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleEditProperty = (property: any) => {
+    setEditingProperty(property);
+    setShowPropertyForm(true);
+  };
+
+  useEffect(() => {
+    fetchProperties();
+  }, []);
 
   const filteredProperties = properties.filter(property => {
     const matchesLocation = selectedFilter === 'all' || property.category === selectedFilter;
@@ -207,9 +188,22 @@ const Properties = () => {
       {/* Properties Grid */}
       <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="mb-8">
+          {/* Admin Controls */}
+          {isAdmin && (
+            <div className="mb-6 p-4 bg-primary/10 rounded-lg border border-primary/20">
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-semibold text-primary">Admin Panel</h3>
+                <Button onClick={() => setShowPropertyForm(true)} className="gap-2">
+                  <Plus className="h-4 w-4" />
+                  Add New Property
+                </Button>
+              </div>
+            </div>
+          )}
+
+          <div className="mb-8 flex items-center justify-between">
             <p className="text-muted-foreground">
-              Βρέθηκαν {filteredProperties.length} ακίνητα
+              {loading ? 'Loading...' : `Βρέθηκαν ${filteredProperties.length} ακίνητα`}
             </p>
           </div>
 
@@ -218,14 +212,14 @@ const Properties = () => {
               <Card key={property.id} className="overflow-hidden hover:shadow-elegant transition-shadow group">
                 <div className="aspect-[4/3] bg-muted relative overflow-hidden">
                   <img 
-                    src={property.image} 
+                    src={property.images?.[0] || "/placeholder.svg"} 
                     alt={property.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute top-4 left-4">
                     <Badge variant="secondary" className="bg-background/90 text-foreground">
-                      {getTypeIcon(property.type)}
-                      <span className="ml-1 capitalize">{property.type}</span>
+                      {getTypeIcon(property.property_type)}
+                      <span className="ml-1 capitalize">{property.property_type}</span>
                     </Badge>
                   </div>
                   <div className="absolute top-4 right-4">
@@ -234,6 +228,27 @@ const Properties = () => {
                       {property.guests}
                     </Badge>
                   </div>
+                  
+                  {/* Admin Controls */}
+                  {isAdmin && (
+                    <div className="absolute bottom-4 right-4 flex gap-2">
+                      <Button
+                        size="sm"
+                        onClick={() => handleEditProperty(property)}
+                        className="bg-background/90 text-foreground hover:bg-background"
+                      >
+                        <Edit className="h-3 w-3" />
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="destructive"
+                        onClick={() => handleDeleteProperty(property.id)}
+                        className="bg-destructive/90 hover:bg-destructive"
+                      >
+                        <Trash2 className="h-3 w-3" />
+                      </Button>
+                    </div>
+                  )}
                 </div>
                 
                 <CardContent className="p-6">
@@ -241,8 +256,8 @@ const Properties = () => {
                     <h3 className="text-lg font-semibold line-clamp-1">{property.title}</h3>
                     <div className="flex items-center space-x-1">
                       <Star className="h-4 w-4 fill-accent text-accent" />
-                      <span className="text-sm font-medium">{property.rating}</span>
-                      <span className="text-sm text-muted-foreground">({property.reviews})</span>
+                      <span className="text-sm font-medium">{property.rating || 0}</span>
+                      <span className="text-sm text-muted-foreground">({property.reviews || 0})</span>
                     </div>
                   </div>
                   
@@ -252,31 +267,39 @@ const Properties = () => {
                   </div>
 
                   <div className="space-y-3 mb-4">
-                    <div>
-                      <h4 className="text-sm font-medium mb-1">Highlights:</h4>
-                      <div className="flex flex-wrap gap-1">
-                        {property.highlights.slice(0, 2).map((highlight, index) => (
-                          <Badge key={index} variant="outline" className="text-xs">
-                            {highlight}
-                          </Badge>
+                    {property.highlights && property.highlights.length > 0 && (
+                      <div>
+                        <h4 className="text-sm font-medium mb-1">Highlights:</h4>
+                        <div className="flex flex-wrap gap-1">
+                          {property.highlights.slice(0, 2).map((highlight, index) => (
+                            <Badge key={index} variant="outline" className="text-xs">
+                              {highlight}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {property.amenities && property.amenities.length > 0 && (
+                      <div className="flex items-center space-x-2">
+                        {property.amenities.slice(0, 3).map((amenity, index) => (
+                          <div key={index} className="flex items-center space-x-1">
+                            {getAmenityIcon(amenity)}
+                            <span className="text-xs text-muted-foreground">{amenity}</span>
+                          </div>
                         ))}
                       </div>
-                    </div>
-
-                    <div className="flex items-center space-x-2">
-                      {property.amenities.slice(0, 3).map((amenity, index) => (
-                        <div key={index} className="flex items-center space-x-1">
-                          {getAmenityIcon(amenity)}
-                          <span className="text-xs text-muted-foreground">{amenity}</span>
-                        </div>
-                      ))}
-                    </div>
+                    )}
                   </div>
 
                   <div className="flex items-center justify-between">
                     <div>
-                      <span className="text-lg font-bold text-primary">{property.price}</span>
-                      <span className="text-sm text-muted-foreground">/βράδυ</span>
+                      <span className="text-lg font-bold text-primary">
+                        {property.price ? `€${property.price}` : 'Price on request'}
+                      </span>
+                      {property.price && (
+                        <span className="text-sm text-muted-foreground">/βράδυ</span>
+                      )}
                     </div>
                   </div>
                 </CardContent>
@@ -304,7 +327,7 @@ const Properties = () => {
             Γίνετε μέλος του αυξανόμενου δικτύου επιτυχημένων ακινήτων που διαχειριζόμαστε.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <EnhancedButton asChild variant="outline" size="xl" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+            <EnhancedButton asChild variant="outline" size="xl" className="border-primary-foreground text-primary hover:bg-primary-foreground hover:text-primary">
               <Link to="/submit-property">Υποβολή Ακινήτου</Link>
             </EnhancedButton>
             <EnhancedButton asChild variant="ghost" size="xl" className="text-primary-foreground hover:bg-primary-foreground/10">
@@ -313,6 +336,20 @@ const Properties = () => {
           </div>
         </div>
       </section>
+
+      {/* Property Form Modal */}
+      <PropertyForm
+        isOpen={showPropertyForm}
+        onClose={() => {
+          setShowPropertyForm(false);
+          setEditingProperty(null);
+        }}
+        onSuccess={() => {
+          fetchProperties();
+          setEditingProperty(null);
+        }}
+        property={editingProperty}
+      />
     </div>
   );
 };
