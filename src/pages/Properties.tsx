@@ -318,19 +318,19 @@ const Properties = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-primary text-primary-foreground">
+      <section className="py-16 bg-white text-black">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Θέλετε το Ακίνητό σας εδώ;
           </h2>
-          <p className="text-xl mb-8 text-primary-foreground/90">
+          <p className="text-xl mb-8 text-black/70">
             Γίνετε μέλος του αυξανόμενου δικτύου επιτυχημένων ακινήτων που διαχειριζόμαστε.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <EnhancedButton asChild variant="outline" size="xl" className="border-primary-foreground text-primary hover:bg-primary-foreground hover:text-primary">
+            <EnhancedButton asChild variant="outline" size="xl" className="border-black text-black hover:bg-black hover:text-white">
               <Link to="/submit-property">Υποβολή Ακινήτου</Link>
             </EnhancedButton>
-            <EnhancedButton asChild variant="ghost" size="xl" className="text-primary-foreground hover:bg-primary-foreground/10">
+            <EnhancedButton asChild variant="ghost" size="xl" className="text-black hover:bg-black/10">
               <Link to="/contact">Μάθετε Περισσότερα</Link>
             </EnhancedButton>
           </div>
