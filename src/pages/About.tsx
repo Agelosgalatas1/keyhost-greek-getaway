@@ -61,22 +61,26 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Story</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">Η Ιστορία μας</h2>
               <div className="space-y-4 text-lg text-muted-foreground">
                 <p>
                   Η Key Host ιδρύθηκε το 2024 με σκοπό να απλοποιήσει τη βραχυχρόνια μίσθωση για ιδιοκτήτες ακινήτων. Προσφέρουμε πλήρη διαχείριση Airbnb, μετατρέποντας τα ακίνητα σε σταθερές πηγές εισοδήματος χωρίς καθόλου κόπο για τον ιδιοκτήτη. Η βάση μας είναι στο Ναύπλιο, αλλά εξυπηρετούμε ακίνητα σε όλη την Ελλάδα.
                 </p>
               </div>
             </div>
-            <div className="bg-muted/30 rounded-lg p-8">
-              <div className="grid grid-cols-2 gap-6">
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-accent mb-2">2024</div>
-                  <p className="text-muted-foreground">Founded</p>
-                </div>
+            <div className="text-center">
+              <div className="grid grid-cols-3 gap-8">
                 <div className="text-center">
                   <div className="text-4xl font-bold text-accent mb-2">25+</div>
-                  <p className="text-muted-foreground">Properties</p>
+                  <p className="text-muted-foreground">Ακίνητα υπό Διαχείριση</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-accent mb-2">98%</div>
+                  <p className="text-muted-foreground">Ικανοποίηση Επισκεπτών</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-accent mb-2">24/7</div>
+                  <p className="text-muted-foreground">Διαθέσιμη Υποστήριξη</p>
                 </div>
               </div>
             </div>
@@ -89,7 +93,7 @@ const About = () => {
       <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Choose Key Host?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Για να μας επιλέξετε;</h2>
           </div>
           
           <div className="grid md:grid-cols-1 gap-8 max-w-5xl mx-auto">
