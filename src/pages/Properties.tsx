@@ -146,12 +146,12 @@ const Properties = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-hero">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-black">
             Το Πελατολόγιό μας
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-black/90 max-w-3xl mx-auto">
             Ανακαλύψτε τα εξαιρετικά ακίνητα που διαχειριζόμαστε σε όλη την Ελλάδα
           </p>
         </div>
