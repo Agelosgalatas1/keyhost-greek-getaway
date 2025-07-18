@@ -87,7 +87,7 @@ const Services = () => {
             Let us handle the work while you enjoy guaranteed passive income from your property investment.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <EnhancedButton asChild variant="outline" size="xl" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+            <EnhancedButton asChild variant="outline" size="xl" className="border-[#5ce3e4] text-[#5ce3e4] hover:bg-[#5ce3e4] hover:text-white">
               <Link to="/submit-property">Get Started Today</Link>
             </EnhancedButton>
             <EnhancedButton asChild variant="ghost" size="xl" className="text-primary-foreground hover:bg-primary-foreground/10">
