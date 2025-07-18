@@ -77,13 +77,13 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: MapPin,
-      title: "Office Location",
-      details: ["Athens, Greece", "Kolonaki District"],
+      title: "Τοποθεσία Γραφείου",
+      details: ["Nafplio, Greece", "Aigiou 43"],
       action: null
     },
     {
       icon: Phone,
-      title: "Phone",
+      title: "Τηλέφωνο",
       details: ["+30 123 456 7890", "Mon-Fri 9AM-6PM"],
       action: "tel:+301234567890"
     },
@@ -104,13 +104,13 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-hero">
+      <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Contact Us
+            Επικοινωνήστε μαζί μας
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground">
-            Ready to discuss your property? We're here to help with any questions about our services.
+            Είστε έτοιμοι να συζητήσουμε το ακίνητό σας; Είμαστε εδώ για να σας βοηθήσουμε με οποιαδήποτε ερώτηση σχετικά με τις υπηρεσίες μας.
           </p>
         </div>
       </section>
