@@ -27,7 +27,7 @@ const Header = () => {
               <img 
                 src="/lovable-uploads/4fd096f0-e2d9-4c14-b82c-bdd90b12c71d.png" 
                 alt="Key-Host Logo" 
-                className="h-10 w-auto"
+                className="h-16 w-auto"
               />
             </Link>
           </div>
