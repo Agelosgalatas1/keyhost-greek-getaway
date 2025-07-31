@@ -87,23 +87,45 @@ export const PropertyForm = ({ isOpen, onClose, onSuccess, property }: PropertyF
         highlights,
       };
 
+      // Get admin credentials from localStorage
+      const adminEmail = localStorage.getItem('adminEmail');
+      const adminPassword = localStorage.getItem('adminPassword');
+
+      if (!adminEmail || !adminPassword) {
+        throw new Error('Admin credentials not found. Please log in again.');
+      }
+
       if (property) {
-        const { error } = await supabase
-          .from('properties')
-          .update(propertyData)
-          .eq('id', property.id);
+        // Update property via edge function
+        const { data: result, error } = await supabase.functions.invoke('update-property', {
+          body: {
+            adminEmail,
+            adminPassword,
+            propertyId: property.id,
+            propertyData
+          }
+        });
 
         if (error) throw error;
+        if (result.error) throw new Error(result.error);
+
         toast({
           title: "Property Updated",
           description: "Property has been successfully updated",
         });
       } else {
-        const { error } = await supabase
-          .from('properties')
-          .insert([propertyData]);
+        // Add property via edge function
+        const { data: result, error } = await supabase.functions.invoke('add-property', {
+          body: {
+            adminEmail,
+            adminPassword,
+            propertyData
+          }
+        });
 
         if (error) throw error;
+        if (result.error) throw new Error(result.error);
+
         toast({
           title: "Property Added",
           description: "New property has been successfully added",
