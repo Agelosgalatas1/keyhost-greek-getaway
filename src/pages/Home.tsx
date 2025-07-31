@@ -84,9 +84,6 @@ const Home = () => {
             Εσείς απλά συλλέγετε τα κέρδη.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <EnhancedButton asChild size="xl" className="bg-accent hover:bg-accent/90 text-white border-0">
-              <Link to="/submit-property">Ζήτησε Προσφορά</Link>
-            </EnhancedButton>
             <EnhancedButton asChild variant="outline" size="xl" className="border-white text-black bg-white hover:bg-white/90">
               <Link to="/services">Μάθε Περισσότερα</Link>
             </EnhancedButton>
@@ -248,7 +245,7 @@ const Home = () => {
                 </div>
                 
                 <EnhancedButton asChild className="w-full">
-                  <Link to="/submit-property">Επιλογή Classic</Link>
+                  <Link to="/contact">Επικοινωνία</Link>
                 </EnhancedButton>
               </CardContent>
             </Card>
@@ -301,9 +298,6 @@ const Home = () => {
             Γίνετε μέλος της αυξανόμενης κοινότητας ιδιοκτητών ακινήτων που ανακάλυψαν την ελευθερία του πραγματικά παθητικού εισοδήματος.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <EnhancedButton asChild variant="default" size="xl">
-              <Link to="/submit-property">Υποβολή Ακινήτου</Link>
-            </EnhancedButton>
             <EnhancedButton asChild variant="outline" size="xl">
               <Link to="/contact">Επικοινωνία</Link>
             </EnhancedButton>

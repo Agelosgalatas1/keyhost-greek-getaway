@@ -77,25 +77,6 @@ const Services = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-white text-black">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Έτοιμοι να Μεγιστοποιήσετε το Δυναμικό του Ακινήτου σας;
-          </h2>
-          <p className="text-xl mb-8 text-black">
-            Αφήστε τα σε εμάς και απολαύστε εγγυημένο παθητικό εισόδημα από την επένδυσή σας.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <EnhancedButton asChild variant="outline" size="xl" className="border-[#5ce3e4] text-[#5ce3e4] hover:bg-[#5ce3e4] hover:text-white">
-              <Link to="/submit-property">Ξεκινήστε Σήμερα</Link>
-            </EnhancedButton>
-            <EnhancedButton asChild variant="ghost" size="xl" className="text-black hover:bg-black/10">
-              <Link to="/contact">Κλείστε Συμβουλευτική Συνάντηση</Link>
-            </EnhancedButton>
-          </div>
-        </div>
-      </section>
     </div>;
 };
 export default Services;
