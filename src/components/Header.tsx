@@ -51,15 +51,12 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Contact Info & CTA */}
+          {/* Contact Info */}
           <div className="hidden lg:flex items-center space-x-4">
             <div className="flex items-center space-x-2 text-sm text-muted-foreground">
               <Phone className="h-4 w-4" />
               <span>+30 275 222 0223</span>
             </div>
-            <EnhancedButton asChild size="sm">
-              <Link to="/submit-property">Υποβολή Ακινήτου</Link>
-            </EnhancedButton>
           </div>
 
           {/* Mobile menu button */}
@@ -90,13 +87,10 @@ const Header = () => {
                 </Link>
               ))}
               <div className="pt-4 border-t border-border">
-                <div className="flex items-center space-x-2 text-sm text-muted-foreground mb-3">
+                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                   <Phone className="h-4 w-4" />
                   <span>+30 275 222 0223</span>
                 </div>
-                <EnhancedButton asChild size="sm" className="w-full">
-                  <Link to="/submit-property">Υποβολή Ακινήτου</Link>
-                </EnhancedButton>
               </div>
             </div>
           </div>
